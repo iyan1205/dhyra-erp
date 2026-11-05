@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#14212B">
+<title>Dhyra — Pengaturan</title>
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/dhyra.css?v=5.6.2">
+<style>
+.wrap{max-width:1180px;margin:0 auto;padding:26px 22px 60px}
+.head{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.head h1{margin:0;font-size:26px;letter-spacing:-.02em}.head .ic{width:54px;height:54px;border-radius:16px;background:#fff;box-shadow:var(--sh);display:grid;place-items:center}
+.lay{display:grid;grid-template-columns:240px minmax(0,1fr);gap:18px;align-items:start}
+.nav{padding:8px;position:sticky;top:76px}
+.nav button{display:flex;align-items:center;gap:10px;width:100%;padding:11px 12px;border:0;background:none;border-radius:12px;font-weight:700;color:var(--mut);cursor:pointer;text-align:left}
+.nav button:hover{background:var(--card2);color:var(--ink)}.nav button.on{background:var(--toskaS);color:var(--toskaD)}
+.nav svg{flex:none}
+.sec{padding:22px 24px}
+.sec h2{margin:0 0 4px;font-size:19px}.sec>p.mut{margin:0 0 18px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+.tg{display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-top:1px dashed var(--line);cursor:pointer}
+.tg input{width:20px;height:20px;margin:2px 0 0;accent-color:var(--toskaD);flex:none}
+.tg b{display:block}.tg small{color:var(--mut)}
+.opt{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.opt label{display:block;border:1px solid var(--line);border-radius:14px;padding:12px 14px;cursor:pointer}
+.opt input{accent-color:var(--toskaD);margin-right:6px}
+.opt label:has(input:checked){border-color:var(--toska);background:var(--toskaS)}
+.opt small{display:block;color:var(--mut);margin-top:4px}
+.ex{display:inline-block;font-family:ui-monospace,Menlo,Consolas,monospace;background:var(--card2);border-radius:8px;padding:3px 9px;font-weight:700}
+.foot{display:flex;justify-content:flex-end;gap:10px;margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
+.info{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
+.info div{background:var(--card2);border-radius:14px;padding:12px 14px}.info small{display:block;color:var(--mut);font-size:12px;font-weight:600}.info b{font-size:18px}
+.lnk{display:flex;gap:12px;align-items:center;padding:14px 0;border-top:1px dashed var(--line);text-decoration:none;color:var(--ink)}
+.lnk:hover b{color:var(--toskaD)}.lnk b{display:block}.lnk small{color:var(--mut)}.lnk .sp{flex:1}
+.pre{white-space:pre-wrap;background:#E7F6EF;border:1px solid #CBE9DB;border-radius:14px;padding:14px 16px;font-size:13.5px;line-height:1.5;max-height:420px;overflow:auto;font-family:var(--f)}
+.isi{display:grid;grid-template-columns:1fr 1fr;gap:4px 14px;margin-bottom:12px}.isi label{display:flex;gap:8px;align-items:center;font-size:14px;cursor:pointer}.isi input{accent-color:var(--toskaD);width:17px;height:17px}
+.cron{background:var(--card2);border-radius:14px;padding:12px 14px;font-size:13.5px;margin-top:10px}.cron code{display:block;background:#fff;border:1px solid var(--line);border-radius:8px;padding:7px 10px;margin:6px 0;word-break:break-all;font-size:12.5px}
+.st{font-size:13.5px;padding:10px 12px;border-radius:12px;background:var(--card2);margin-bottom:12px}
+.calc{background:var(--amberS);color:#6B4700;border-radius:12px;padding:11px 14px;font-weight:600;font-size:14px;margin-top:4px}
+.rs{display:grid;gap:8px;margin:6px 0 16px}
+.rs label{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line);border-radius:14px;padding:12px 14px;cursor:pointer}
+.rs label:has(input:checked){border-color:#F3C9C6;background:var(--koralS)}
+.rs input{width:19px;height:19px;margin:2px 0 0;accent-color:#B4322B;flex:none}
+.rs .t{flex:1;min-width:0}.rs b{display:block}.rs small{display:block;color:var(--mut);font-size:13px}.rs .n{font-size:12.5px;font-weight:700;color:var(--mut);white-space:nowrap}
+.danger{border:1px solid #F3C9C6;background:#FFF8F7;border-radius:16px;padding:16px;margin-top:6px}
+@media(max-width:820px){.lay{grid-template-columns:1fr}.nav{position:static;display:flex;overflow-x:auto;gap:4px}.nav button{white-space:nowrap;width:auto}.g2,.opt{grid-template-columns:1fr}.info{grid-template-columns:1fr 1fr}.wrap{padding:18px 14px 50px}.sec{padding:18px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="in-w">
+  <a id="topLogo" href="beranda.html?home=1" style="text-decoration:none"></a>
+  <span class="sp"></span>
+  <span id="homeBtn"></span>
+</div></header>
+<main class="wrap">
+  <div class="head"><span class="ic" id="hIc"></span><div><h1>Pengaturan</h1><div class="mut">Profil usaha, struk, SKU produk, program poin, cadangan, dan reset data.</div></div></div>
+  <div id="body"><div class="card" style="padding:40px;text-align:center"><span class="spin d"></span></div></div>
+</main>
+<div id="modals"></div>
+<div class="toasts" id="toasts"></div>
+<script src="assets/dhyra.js?v=5.6.2"></script>
+<script>
+'use strict';
+const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const D = window.Dhyra;
+const ICO = {
+  store: '<path d="M3 9l1.5-5h15L21 9M3 9v11h18V9M3 9h18M9 20v-6h6v6"/>',
+  receipt: '<path d="M5 3h14v18l-3-2-2 2-2-2-2 2-2-2-3 2zM9 8h6M9 12h6"/>',
+  tag: '<path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8zM7.5 7.5h.01"/>',
+  heart: '<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/>',
+  db: '<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5M3 12c0 1.7 4 3 9 3s9-1.3 9-3"/>',
+  dl: '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>',
+  trash: '<path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6M10 11v6M14 11v6"/>',
+  arr: '<path d="M9 18l6-6-6-6"/>', wa: '<path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/>', x: '<path d="M18 6 6 18M6 6l12 12"/>'
+};
+const ic = (n, s = 18) => `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICO[n]}</svg>`;
+const TABS = [['profil', 'Profil usaha', 'store'], ['struk', 'Struk & pajak', 'receipt'], ['sku', 'SKU produk', 'tag'], ['poin', 'Program poin', 'heart'], ['wa', 'Laporan WhatsApp', 'wa'], ['sistem', 'Cadangan & sistem', 'db'], ['reset', 'Reset data', 'trash']];
+let DATA = null, TAB = (location.hash.slice(1) || 'profil');
+if (!TABS.some(t => t[0] === TAB)) TAB = 'profil';
+const rp = n => 'Rp ' + Math.round(+n || 0).toLocaleString('id-ID');
+const num = v => +String(v || '').replace(/[^\d,]/g, '').replace(',', '.') || 0;
+
+function toast(m, t) { const e = document.createElement('div'); e.className = 'toast ' + (t || ''); e.textContent = m; $('#toasts').appendChild(e); setTimeout(() => e.remove(), t === 'err' ? 5000 : 2600); }
+async function busyBtn(b, fn) { const o = b.innerHTML; b.disabled = true; b.innerHTML = '<span class="spin"></span>Menyimpan…'; try { await fn(); } finally { b.disabled = false; b.innerHTML = o; } }
+const fld = (lbl, id, v, attr = '') => `<label class="fld"><span>${lbl}</span><input class="in" id="${id}" value="${esc(v)}" ${attr}></label>`;
+const tog = (id, on, t, s) => `<label class="tg"><input type="checkbox" id="${id}" ${on ? 'checked' : ''}><span><b>${t}</b><small>${s}</small></span></label>`;
+const foot = () => `<div class="foot"><button class="btn pri" id="sv">Simpan perubahan</button></div>`;
+
+function render() {
+  $('#body').innerHTML = `<div class="lay"><nav class="card nav">${TABS.map(t => `<button data-t="${t[0]}" class="${t[0] === TAB ? 'on' : ''}">${ic(t[2])}${t[1]}</button>`).join('')}</nav><section class="card sec" id="sec"></section></div>`;
+  $$('.nav button').forEach(b => b.onclick = () => { TAB = b.dataset.t; history.replaceState(null, '', '#' + TAB); render(); });
+  ({ profil: drawProfil, struk: drawStruk, sku: drawSku, poin: drawPoin, wa: drawWa, sistem: drawSistem, reset: drawReset })[TAB]();
+}
+async function save(d, msg) { DATA = await D.sys('setSave', d); toast(msg || 'Pengaturan disimpan'); render(); }
+const bindSave = fn => { $('#sv').onclick = e => busyBtn(e.currentTarget, async () => { try { await fn(); } catch (er) { toast(er.message, 'err'); } }); };
+
+function drawProfil() {
+  const s = DATA.set;
+  $('#sec').innerHTML = `<h2>Profil usaha</h2><p class="mut">Tampil di struk, faktur, purchase order, dan kop laporan.</p>
+    ${fld('Nama usaha *', 'pN', s.namaToko, 'maxlength="120"')}
+    ${fld('Alamat', 'pA', s.alamat, 'maxlength="200"')}
+    <div class="g2">${fld('Telepon / WhatsApp', 'pT', s.telepon, 'inputmode="tel"')}${fld('Email', 'pE', s.Email, 'type="email"')}</div>
+    ${fld('NPWP (opsional)', 'pP', s.NPWP)}${foot()}`;
+  bindSave(() => save({ namaToko: $('#pN').value, alamat: $('#pA').value, telepon: $('#pT').value, Email: $('#pE').value, NPWP: $('#pP').value }));
+}
+function drawStruk() {
+  const s = DATA.set;
+  $('#sec').innerHTML = `<h2>Struk & pajak</h2><p class="mut">Berlaku untuk semua kasir.</p>
+    <label class="fld"><span>Ukuran kertas struk</span></label>
+    <div class="opt"><label><input type="radio" name="kt" value="58" ${s.kertas !== '80' ? 'checked' : ''}><b>58 mm</b><small>Printer thermal kecil / Bluetooth</small></label><label><input type="radio" name="kt" value="80" ${s.kertas === '80' ? 'checked' : ''}><b>80 mm</b><small>Printer thermal kasir standar</small></label></div>
+    ${fld('Pesan di bawah struk', 'sF', s.footer, 'maxlength="200" placeholder="Terima kasih, selamat belanja kembali!"')}
+    <div class="g2">${fld('Nama pajak', 'sPN', s.pajakNama || 'PPN', 'maxlength="20"')}${fld('Tarif pajak (%) — isi 0 bila tidak memungut', 'sP', s.pajak || '0', 'inputmode="decimal"')}</div>
+    ${tog('sAC', s.autoCetak === '1', 'Cetak struk otomatis', 'Dialog cetak langsung muncul setelah pembayaran.')}
+    ${tog('sIM', s.izinMinus === '1', 'Izinkan jual saat stok habis', 'Stok boleh minus; cocok bila barang sering datang belakangan dicatat.')}${foot()}`;
+  bindSave(() => save({ kertas: ($('input[name=kt]:checked') || {}).value || '58', footer: $('#sF').value, pajakNama: $('#sPN').value, pajak: num($('#sP').value), autoCetak: $('#sAC').checked, izinMinus: $('#sIM').checked }));
+}
+function skuEx(mode, pre) { return mode === 'prefix' ? (String(pre || 'DHY').toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 8) || 'DHY') + '-0001' : DATA.info.contohSku; }
+function drawSku() {
+  const s = DATA.set, i = DATA.info, mode = s.SkuMode === 'prefix' ? 'prefix' : 'kategori';
+  $('#sec').innerHTML = `<h2>SKU produk</h2><p class="mut">Setiap produk wajib punya SKU (kode unik). Bila kolom SKU dikosongkan saat menambah produk atau import Excel, Dhyra membuatnya otomatis.</p>
+    <div class="opt"><label><input type="radio" name="sm" value="kategori" ${mode === 'kategori' ? 'checked' : ''}><b>Dari kategori</b><small>Kategori "Minuman" → <span class="ex">${esc(i.contohSku)}</span>, "Snack" → <span class="ex">SNC-0001</span></small></label>
+    <label><input type="radio" name="sm" value="prefix" ${mode === 'prefix' ? 'checked' : ''}><b>Awalan tetap</b><small>Semua produk memakai awalan yang sama, mis. <span class="ex">DHY-0001</span></small></label></div>
+    <div id="pfx" ${mode === 'prefix' ? '' : 'hidden'}>${fld('Awalan SKU (huruf/angka, maks. 8)', 'sPx', s.SkuPrefix || 'DHY', 'maxlength="8" style="text-transform:uppercase;max-width:220px"')}</div>
+    <p class="sm">Contoh SKU berikutnya: <span class="ex" id="sEx">${esc(skuEx(mode, s.SkuPrefix))}</span></p>
+    ${i.tanpaSku ? `<div class="calc" style="display:flex;gap:12px;align-items:center;flex-wrap:wrap"><span style="flex:1">${i.tanpaSku} produk belum punya SKU.</span><button class="btn sm" id="sFill">Buatkan SKU otomatis</button></div>` : `<p class="sm mut">✓ Semua ${i.produk} produk sudah punya SKU.</p>`}
+    ${foot()}`;
+  const upd = () => { const m = $('input[name=sm]:checked').value; $('#pfx').hidden = m !== 'prefix'; $('#sEx').textContent = skuEx(m, $('#sPx').value); };
+  $$('input[name=sm]').forEach(r => r.onchange = upd); $('#sPx').oninput = upd;
+  if ($('#sFill')) $('#sFill').onclick = e => busyBtn(e.currentTarget, async () => { try { const r = await D.sys('skuIsi'); DATA = r; toast(r.n + ' produk diberi SKU'); render(); } catch (er) { toast(er.message, 'err'); } });
+  bindSave(() => save({ SkuMode: $('input[name=sm]:checked').value, SkuPrefix: $('#sPx').value }));
+}
+function drawPoin() {
+  const s = DATA.set;
+  $('#sec').innerHTML = `<h2>Program poin member</h2><p class="mut">Member mengumpulkan poin dari belanja, lalu menukarnya sebagai potongan di kasir.</p>
+    ${tog('mA', s.MemberAktif !== '0', 'Program poin aktif', 'Matikan bila hanya ingin mencatat data member tanpa poin.')}
+    <div class="g2" style="margin-top:12px">${fld('Belanja per 1 poin (Rp)', 'mP', s.PoinPer || '10000', 'inputmode="numeric"')}${fld('Nilai 1 poin saat ditukar (Rp)', 'mN', s.PoinNilai || '100', 'inputmode="numeric"')}</div>
+    <div class="g2">${fld('Minimal poin untuk ditukar', 'mM', s.PoinMin || '10', 'inputmode="numeric"')}</div>
+    <div class="calc" id="mC"></div>${foot()}`;
+  const c = () => { const p = Math.max(100, num($('#mP').value)), n = num($('#mN').value), b = 100000, pt = Math.floor(b / p); $('#mC').textContent = `Contoh: belanja ${rp(b)} → dapat ${pt} poin, senilai ${rp(pt * n)} (${(pt * n / b * 100).toLocaleString('id-ID', { maximumFractionDigits: 2 })}% kembali ke pelanggan).`; };
+  ['#mP', '#mN'].forEach(x => $(x).oninput = c); c();
+  bindSave(() => save({ MemberAktif: $('#mA').checked, PoinPer: num($('#mP').value), PoinNilai: num($('#mN').value), PoinMin: num($('#mM').value) }));
+}
+let WA = null;
+async function drawWa() {
+  $('#sec').innerHTML = '<div style="padding:30px;text-align:center"><span class="spin d"></span></div>';
+  if (!WA) try { WA = await D.sys('waGet'); } catch (e) { $('#sec').innerHTML = `<div class="err-box">${esc(e.message)}</div>`; return; }
+  const c = WA.cfg, wb = c.provider === 'wablas';
+  $('#sec').innerHTML = `<h2>Laporan harian ke WhatsApp</h2><p class="mut">Ringkasan penjualan, stok, kehadiran, dan kas dikirim otomatis ke WhatsApp pemilik setiap hari.</p>
+    ${c.status ? `<div class="st">Pengiriman terakhir: <b>${esc(c.status)}</b></div>` : ''}
+    ${tog('wA', c.aktif, 'Kirim laporan otomatis setiap hari', 'Jam server saat ini ' + WA.jamServer + '. Laporan dikirim sekali sehari setelah jam yang dipilih.')}
+    <label class="fld" style="margin-top:12px"><span>Gateway WhatsApp</span></label>
+    <div class="opt"><label><input type="radio" name="wp" value="fonnte" ${!wb ? 'checked' : ''}><b>Fonnte</b><small>Daftar di fonnte.com, hubungkan nomor WA lewat scan QR, salin token dari menu Device.</small></label><label><input type="radio" name="wp" value="wablas" ${wb ? 'checked' : ''}><b>Wablas</b><small>Daftar di wablas.com, salin token, secret key, dan domain server dari dashboard.</small></label></div>
+    <div class="g2">${fld('Token API', 'wT', '', `placeholder="${c.adaToken ? 'Tersimpan ' + esc(c.token) + ' — isi untuk mengganti' : 'Tempel token dari gateway'}" autocomplete="off"`)}<div id="wbx" ${wb ? '' : 'hidden'}>${fld('Secret key (Wablas, bila ada)', 'wS', '', `placeholder="${c.secret ? 'Tersimpan' : 'opsional'}" autocomplete="off"`)}</div></div>
+    <div id="wbd" ${wb ? '' : 'hidden'}>${fld('Domain server Wablas', 'wD', c.domain, 'placeholder="https://jkt.wablas.com"')}</div>
+    <div class="g2">${fld('Nomor WhatsApp tujuan (pisahkan dengan koma)', 'wN', c.tujuan, 'placeholder="0812xxxx, 0813xxxx" inputmode="tel"')}${fld('Jam kirim', 'wJ', c.jam, 'type="time"')}</div>
+    <label class="fld"><span>Isi laporan</span></label><div class="isi">${Object.entries(WA.isiOpsi).map(([k, v]) => `<label><input type="checkbox" value="${k}" ${c.isi.includes(k) ? 'checked' : ''}>${esc(v)}</label>`).join('')}</div>
+    <label class="fld"><span>Contoh laporan hari ini</span></label><div class="pre" id="wPrev">${esc(WA.preview)}</div>
+    <div class="foot" style="justify-content:space-between;flex-wrap:wrap"><span style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn" id="wTes">Kirim pesan tes</button><button class="btn" id="wNow">Kirim laporan sekarang</button></span><button class="btn pri" id="sv">Simpan</button></div>
+    <div class="cron"><b>Supaya selalu tepat waktu, pasang Cron Job di hosting</b> (hPanel → Lanjutan → Cron Jobs, atau cPanel → Cron Jobs), jalankan setiap 15 menit:
+      <code>${esc(WA.cronCli)}</code>atau lewat URL (untuk layanan cron online seperti cron-job.org):<code>${esc(WA.cronUrl)}</code>
+      <span class="mut">Tanpa cron, laporan tetap terkirim saat ada yang membuka Dhyra setelah jam kirim.${c.cronLast ? ' Cron terakhir berjalan: ' + esc(c.cronLast) + '.' : ''}${WA.curl ? '' : ' ⚠ Ekstensi cURL tidak aktif; Dhyra memakai cara alternatif.'}</span></div>`;
+  $$('input[name=wp]').forEach(r => r.onchange = () => { const w = r.value === 'wablas'; $('#wbx').hidden = !w; $('#wbd').hidden = !w; });
+  const data = () => ({ aktif: $('#wA').checked, provider: ($('input[name=wp]:checked') || {}).value, token: $('#wT').value.trim(), secret: $('#wS').value.trim(), domain: $('#wD').value.trim(), tujuan: $('#wN').value, jam: $('#wJ').value, isi: $$('.isi input:checked').map(x => x.value) });
+  const doSave = async () => { WA = await D.sys('waSave', data()); };
+  bindSave(async () => { await doSave(); toast('Pengaturan laporan WhatsApp disimpan'); drawWa(); });
+  $('#wTes').onclick = e => busyBtn(e.currentTarget, async () => { try { await doSave(); WA = await D.sys('waTest', {}); toast('Pesan tes terkirim: ' + WA.info); drawWa(); } catch (er) { toast(er.message, 'err'); } });
+  $('#wNow').onclick = e => busyBtn(e.currentTarget, async () => { try { await doSave(); WA = await D.sys('waTest', { laporan: 1 }); toast('Laporan terkirim: ' + WA.info); drawWa(); } catch (er) { toast(er.message, 'err'); } });
+}
+function drawSistem() {
+  const i = DATA.info;
+  $('#sec').innerHTML = `<h2>Cadangan & sistem</h2><p class="mut">Unduh cadangan secara rutin, misalnya seminggu sekali, dan simpan di tempat lain.</p>
+    <div class="info"><div><small>Produk</small><b>${i.produk.toLocaleString('id-ID')}</b></div><div><small>Transaksi</small><b>${i.transaksi.toLocaleString('id-ID')}</b></div><div><small>Member</small><b>${i.member.toLocaleString('id-ID')}</b></div><div><small>Pengguna · Lokasi</small><b>${i.pengguna} · ${i.lokasi}</b></div></div>
+    <button class="btn pri" id="bk">${ic('dl')}Unduh cadangan database (.sql)</button>
+    <p class="sm mut" style="margin:8px 0 18px">File .sql bisa dipulihkan lewat phpMyAdmin → Import. Foto produk ada di folder <code>uploads/produk</code>.</p>
+    <a class="lnk" href="inventaris.html#lokasi">${D.icon('inventaris', 34)}<span><b>Lokasi toko & gudang</b><small>Tambah lokasi, lokasi penjualan dan lokasi stok masuk</small></span><span class="sp"></span>${ic('arr')}</a>
+    <a class="lnk" href="akuntansi.html">${D.icon('akuntansi', 34)}<span><b>Akun integrasi & kunci periode</b><small>Di Akuntansi → Pengaturan</small></span><span class="sp"></span>${ic('arr')}</a>
+    <a class="lnk" href="pengguna.html">${D.icon('pengguna', 34)}<span><b>Pengguna & hak akses</b><small>Pegawai, jabatan, log aktivitas</small></span><span class="sp"></span>${ic('arr')}</a>
+    <p class="sm mut" style="margin-top:16px">Dhyra ${esc(i.versi)} · database v${i.db} · PHP ${esc(i.php)} · MySQL ${esc(i.mysql)}</p>`;
+  $('#bk').onclick = e => busyBtn(e.currentTarget, async () => {
+    try { const r = await D.sys('backup'); const bin = atob(r.b64), u8 = new Uint8Array(bin.length); for (let k = 0; k < bin.length; k++) u8[k] = bin.charCodeAt(k); const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([u8], { type: r.mime })); a.download = r.name; document.body.appendChild(a); a.click(); a.remove(); toast('Cadangan diunduh'); }
+    catch (er) { toast(er.message, 'err'); }
+  });
+}
+function unduhCadangan(r) { const bin = atob(r.b64), u8 = new Uint8Array(bin.length); for (let k = 0; k < bin.length; k++) u8[k] = bin.charCodeAt(k); const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([u8], { type: r.mime })); a.download = r.name; document.body.appendChild(a); a.click(); a.remove(); }
+async function drawReset() {
+  $('#sec').innerHTML = '<div style="padding:30px;text-align:center"><span class="spin d"></span></div>';
+  let R; try { R = await D.sys('resetInfo'); } catch (e) { $('#sec').innerHTML = `<div class="err-box">${esc(e.message)}</div>`; return; }
+  $('#sec').innerHTML = `<h2>Reset data</h2><p class="mut">Hapus data per menu, misalnya data uji coba sebelum toko mulai dipakai sungguhan. Jurnal akuntansi yang terkait ikut dihapus sehingga neraca tetap seimbang. Pengguna, jabatan, pengaturan, akun perkiraan, dan lokasi tidak ikut terhapus.</p>
+    <div class="rs">${R.grup.map(g => `<label><input type="checkbox" value="${g.id}"><span class="t"><b>${esc(g.nama)}</b><small>${esc(g.isi)}</small>${g.catatan ? `<small>✓ ${esc(g.catatan)}</small>` : ''}</span><span class="n">${g.jumlah.toLocaleString('id-ID')} ${esc(g.satuan)}</span></label>`).join('')}</div>
+    <div id="rsStok" hidden>${tog('rsKs', true, 'Kembalikan stok barang yang terjual', 'Disarankan untuk menghapus transaksi uji coba. Matikan bila stok fisik di gudang sudah dihitung ulang.')}</div>
+    <div class="danger" id="rsBox" hidden>
+      <b style="color:#9B2C25">⚠️ Data yang direset tidak bisa dikembalikan</b><p class="sm" style="margin:4px 0 12px" id="rsSum"></p>
+      ${tog('rsBk', true, 'Unduh cadangan database dulu', 'Sangat disarankan. File .sql bisa dipulihkan lewat phpMyAdmin bila ternyata data masih dibutuhkan.')}
+      <div class="g2" style="margin-top:10px">${fld('Password Anda', 'rsPw', '', 'type="password" autocomplete="current-password"')}${fld('Ketik RESET untuk konfirmasi', 'rsKf', '', 'autocomplete="off" style="text-transform:uppercase"')}</div>
+      <div class="foot" style="border:0;padding-top:0"><button class="btn err" id="rsGo" disabled>${ic('trash')}Reset data terpilih</button></div>
+    </div>`;
+  const sel = () => $$('.rs input:checked').map(i => i.value);
+  const upd = () => {
+    const g = sel(), names = R.grup.filter(x => g.includes(x.id)).map(x => x.nama);
+    if (g.includes('produk') && !g.includes('stok')) names.push('(otomatis) Inventaris & Gudang: stok & riwayat');
+    if (g.includes('karyawan')) ['sdm', 'kpi'].filter(x => !g.includes(x)).forEach(x => names.push('(otomatis) ' + R.grup.find(y => y.id === x).nama));
+    $('#rsBox').hidden = !g.length; $('#rsStok').hidden = !(g.includes('kasir') || g.includes('online')) || g.includes('stok') || g.includes('produk');
+    $('#rsSum').textContent = 'Akan direset: ' + names.join(', ') + '.';
+    $('#rsGo').disabled = !($('#rsKf').value.trim().toUpperCase() === 'RESET' && $('#rsPw').value);
+  };
+  $$('.rs input').forEach(i => i.onchange = upd); $('#rsKf').oninput = upd; $('#rsPw').oninput = upd;
+  $('#rsGo').onclick = async e => {
+    const b = e.currentTarget, o = b.innerHTML; b.disabled = true;
+    try {
+      if ($('#rsBk').checked) { b.innerHTML = '<span class="spin"></span>Mengunduh cadangan…'; unduhCadangan(await D.sys('backup')); }
+      b.innerHTML = '<span class="spin"></span>Mereset…';
+      const r = await D.sys('resetRun', { grup: sel(), password: $('#rsPw').value, konfirmasi: $('#rsKf').value, kembalikanStok: $('#rsKs') ? $('#rsKs').checked : true });
+      toast('Reset selesai: ' + r.nama.join(', ') + (r.penyesuaian ? ' · nilai persediaan disesuaikan ' + rp(r.penyesuaian) : ''));
+      DATA = await D.sys('setGet'); drawReset();
+    } catch (er) { toast(er.message, 'err'); b.disabled = false; b.innerHTML = o; }
+  };
+}
+addEventListener('hashchange', () => { const t = location.hash.slice(1); if (DATA && t !== TAB && TABS.some(x => x[0] === t)) { TAB = t; render(); } });
+(async () => {
+  $('#topLogo').innerHTML = D.logo(30); $('#homeBtn').innerHTML = D.homeBtn('btn'); $('#hIc').innerHTML = D.icon('pengaturan', 38);
+  if (!D.token()) return D.toLogin();
+  try {
+    const me = await D.sys('me');
+    if (!me.user.admin) { $('#body').innerHTML = '<div class="card" style="padding:24px">Menu ini hanya untuk Administrator. <a href="beranda.html?home=1">Kembali ke Beranda</a></div>'; return; }
+    DATA = await D.sys('setGet'); render();
+  } catch (e) { if (e.code === 'AUTH') return D.toLogin('Sesi berakhir. Silakan masuk kembali.'); $('#body').innerHTML = `<div class="err-box">${esc(e.message)}</div>`; }
+})();
+</script>
+</body>
+</html>

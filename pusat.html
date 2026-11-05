@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#14212B">
+<title>Panel Pengelola · Dhyra</title>
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/dhyra.css?v=5.6.2">
+<style>
+.wrap{max-width:1280px;margin:0 auto;padding:22px 22px 70px}
+.top .in-w{max-width:1280px}
+.tabs{display:flex;gap:2px;border-bottom:1px solid var(--line);margin-bottom:20px;overflow-x:auto}
+.tab{padding:11px 15px;border:0;background:none;font-weight:700;color:var(--mut);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1px;white-space:nowrap;display:flex;gap:6px;align-items:center}
+.tab.on{color:var(--ink);border-color:var(--toska)}
+.tab .bdg{padding:1px 7px}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:16px}
+.kp{padding:16px 18px}.kp small{color:var(--mut);font-weight:700;font-size:12.5px;text-transform:uppercase;letter-spacing:.04em}.kp b{display:block;font-size:26px;letter-spacing:-.02em;margin-top:4px}.kp span{font-size:13px;color:var(--mut)}
+.g2{display:grid;grid-template-columns:1.4fr 1fr;gap:16px;margin-bottom:16px}@media(max-width:980px){.g2{grid-template-columns:1fr}}
+.pn{padding:18px}.pn h3{margin:0 0 12px;font-size:16px;display:flex;align-items:center;gap:8px}
+.bars{display:flex;align-items:flex-end;gap:6px;height:170px;padding-top:10px}
+.bars .c{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end;min-width:0}
+.bars .c i{width:100%;max-width:38px;background:var(--toska);border-radius:7px 7px 3px 3px;min-height:3px}
+.bars .c small{font-size:11px;color:var(--mut);white-space:nowrap}
+.bars.mini{height:70px;gap:3px}.bars.mini .c i{background:var(--biru);border-radius:3px}
+.alert{display:flex;gap:10px;align-items:center;padding:12px 14px;border-radius:12px;background:var(--amberS);color:#6B4700;font-weight:600;margin-bottom:12px;font-size:14px}
+.tb{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}.tb .in{width:auto;flex:1;min-width:200px;max-width:360px}.tb .sp{flex:1}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--mut);padding:11px 12px;border-bottom:1px solid var(--line);background:#FAFBF9;white-space:nowrap}
+td{padding:11px 12px;border-bottom:1px solid var(--line);font-size:14px;vertical-align:middle}tr:last-child td{border-bottom:0}
+.tw{overflow-x:auto}.r{text-align:right}
+td small{display:block;color:var(--mut);font-size:12.5px}
+tr.ck{cursor:pointer}tr.ck:hover td{background:#FAFBF9}
+.seg{display:inline-grid;grid-auto-flow:column;gap:3px;background:var(--card2);padding:3px;border-radius:11px}
+.seg button{border:0;background:none;padding:7px 12px;border-radius:8px;font-weight:700;color:var(--mut);cursor:pointer;font-size:13.5px;white-space:nowrap}.seg button.on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.pkg{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px}
+.pkc{padding:18px;display:flex;flex-direction:column;gap:8px}.pkc h3{margin:0;font-size:19px;display:flex;gap:8px;align-items:center}
+.pkc .pr{font-size:24px;font-weight:800}.pkc .pr small{font-size:13px;color:var(--mut);font-weight:600}
+.mods{display:flex;flex-wrap:wrap;gap:5px}
+.chk{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:6px}
+.chk label{display:flex;gap:8px;align-items:center;padding:8px 10px;border:1px solid var(--line);border-radius:10px;cursor:pointer;font-size:14px}
+.chk label:has(input:checked){border-color:var(--toska);background:var(--toskaS)}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.f3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:600px){.f2,.f3{grid-template-columns:1fr}}
+.sw{display:flex;gap:10px;align-items:center;font-weight:600;cursor:pointer;margin-bottom:12px}.sw input{width:18px;height:18px;accent-color:var(--toskaD)}
+.setg{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:16px}@media(max-width:500px){.setg{grid-template-columns:1fr}}
+.setg .card{padding:20px}.setg h3{margin:0 0 14px;font-size:16px}
+.help{font-size:12.5px;color:var(--mut);margin:-8px 0 12px}
+.md.xl{max-width:960px}
+.dl{display:grid;grid-template-columns:140px 1fr;gap:6px 12px;font-size:14px}.dl dt{color:var(--mut)}.dl dd{margin:0;font-weight:600}
+.acts{display:flex;gap:8px;flex-wrap:wrap}
+.lgn{min-height:100vh;display:grid;place-items:center;padding:20px;background:linear-gradient(160deg,#0B7A6D,#14212B)}
+.lgn .card{max-width:400px;width:100%;padding:30px 26px}
+code{background:var(--card2);padding:2px 6px;border-radius:6px;font-size:13px;word-break:break-all}
+.prev{border:1px dashed var(--line);border-radius:12px;padding:10px}
+</style>
+</head>
+<body>
+<div id="login" class="lgn" hidden><form class="card" id="lf"><div id="lLogo" style="margin-bottom:14px"></div><h2 style="margin:0 0 4px">Panel pengelola</h2><p class="mut" style="margin:0 0 18px">Khusus pemilik layanan. Bukan untuk toko.</p><div class="err-box" id="le" hidden></div>
+  <label class="fld"><span>Username</span><input class="in" id="lu" autocomplete="username" autocapitalize="none" required></label><label class="fld"><span>Password</span><input class="in" id="lp" type="password" autocomplete="current-password" required></label>
+  <button class="btn pri" style="width:100%;min-height:46px">Masuk</button></form></div>
+<div id="app" hidden>
+<header class="top"><div class="in-w"><span id="tLogo"></span><span class="bdg b">Pengelola</span><span class="sp"></span><a class="btn sm" href="daftar.html" target="_blank" rel="noopener">Halaman daftar ↗</a><button class="who" id="who"><span class="tx"><b id="wN"></b><small id="wU"></small></span><span class="av" id="wA"></span></button></div></header>
+<div class="menu" id="menu" hidden><button data-m="pw">Ganti password</button><button data-m="out" style="color:#B4322B">Keluar</button></div>
+<main class="wrap">
+  <nav class="tabs" role="tablist" id="tabs"><button class="tab" data-t="ringkasan">Ringkasan</button><button class="tab" data-t="toko">Toko</button><button class="tab" data-t="tagihan">Tagihan <span class="bdg a" id="nPeriksa" hidden></span></button><button class="tab" data-t="paket">Paket & harga</button><button class="tab" data-t="voucher">Voucher</button><button class="tab" data-t="pengumuman">Pengumuman</button><button class="tab" data-t="pengaturan">Pengaturan</button><button class="tab" data-t="log">Log</button></nav>
+  <div id="body"></div>
+</main>
+</div>
+<div id="modals"></div><div class="toasts" id="toasts"></div>
+<script src="assets/dhyra.js?v=5.6.2"></script>
+<script>
+'use strict';
+const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const D = window.Dhyra;
+const rp = n => 'Rp' + Math.round(+n || 0).toLocaleString('id-ID');
+const rpk = n => n >= 1e6 ? 'Rp' + (n / 1e6).toLocaleString('id-ID', { maximumFractionDigits: 1 }) + ' jt' : n >= 1e3 ? 'Rp' + Math.round(n / 1e3) + ' rb' : rp(n);
+const tgl = s => s ? s.slice(8, 10) + '/' + s.slice(5, 7) + '/' + s.slice(0, 4) : '–';
+const BLN = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
+const ST = { trial: ['b', 'Masa coba'], aktif: ['t', 'Aktif'], tenggang: ['a', 'Tenggang'], baca: ['k', 'Baca-saja'], beku: ['k', 'Dibekukan'] };
+const TS = { menunggu: ['a', 'Menunggu'], dibayar: ['t', 'Lunas'], batal: ['', 'Batal'] };
+let TOK = D.store.get('dh_pusat'), ME = null, TAB = 'ringkasan', MODUL = {}, PAKET = [];
+const ui = { tokoQ: '', tokoSt: '', tagSt: 'periksa', tagQ: '' };
+function toast(m, t) { const e = document.createElement('div'); e.className = 'toast ' + (t || ''); e.textContent = m; $('#toasts').appendChild(e); setTimeout(() => e.remove(), t === 'err' ? 5000 : 2600); }
+function modal(title, body, foot, cls) {
+  const ov = document.createElement('div'); ov.className = 'ov';
+  ov.innerHTML = `<div class="md ${cls || ''}" role="dialog" aria-modal="true"><div class="mh"><h3>${title}</h3><button class="ib" data-x aria-label="Tutup"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div><div class="mb">${body}</div>${foot ? `<div class="mf">${foot}</div>` : ''}</div>`;
+  ov.addEventListener('mousedown', e => { if (e.target === ov) ov.remove(); });
+  $$('[data-x]', ov).forEach(b => b.onclick = () => ov.remove());
+  $('#modals').appendChild(ov); return ov;
+}
+function ask(msg, ok, danger) { return new Promise(res => { const ov = modal('Konfirmasi', `<p style="margin:0">${msg}</p>`, `<button class="btn" data-x>Batal</button><button class="btn ${danger ? 'err' : 'pri'}" id="ok">${ok || 'Ya'}</button>`); $$('[data-x]', ov).forEach(b => b.addEventListener('click', () => res(false))); $('#ok', ov).onclick = () => { ov.remove(); res(true); }; }); }
+async function api(a, d) {
+  const r = await fetch('api.php', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ m: 'saas', a: 'p' + a[0].toUpperCase() + a.slice(1), t: TOK, d: d || {} }) }).then(x => x.json()).catch(() => ({ error: 'Gagal terhubung ke server.' }));
+  if (r.error) { const e = new Error(r.error); e.code = r.code; if (r.code === 'AUTH') { D.store.del('dh_pusat'); TOK = null; showLogin(r.error); } throw e; }
+  return r;
+}
+async function act(btn, fn) { const b = btn; if (b) b.disabled = true; try { return await fn(); } catch (e) { toast(e.message, 'err'); } finally { if (b) b.disabled = false; } }
+const fileData = f => new Promise((ok, no) => { const r = new FileReader(); r.onload = () => ok(r.result); r.onerror = no; r.readAsDataURL(f); });
+const lim = n => n > 0 ? n.toLocaleString('id-ID') : '∞';
+const stB = t => `<span class="bdg ${ST[t.status][0]}">${ST[t.status][1]}</span>`;
+const sisaTx = t => t.status === 'baca' ? `lewat ${-t.sisa} hari` : t.sisa < 0 ? `lewat ${-t.sisa} hari` : t.sisa === 0 ? 'hari ini' : `${t.sisa} hari lagi`;
+
+/* ---------------- login ---------------- */
+function showLogin(msg) { $('#app').hidden = true; $('#login').hidden = false; $('#lLogo').innerHTML = D.logo(34); const e = $('#le'); e.hidden = !msg; e.textContent = msg || ''; $('#lu').focus(); }
+$('#lf').onsubmit = async e => {
+  e.preventDefault();
+  try { const r = await api('login', { username: $('#lu').value, password: $('#lp').value }); TOK = r.token; D.store.set('dh_pusat', TOK); ME = r; $('#lp').value = ''; start(); }
+  catch (er) { const x = $('#le'); x.hidden = false; x.textContent = er.message; }
+};
+function start() {
+  $('#login').hidden = true; $('#app').hidden = false;
+  $('#tLogo').innerHTML = D.logo(28); $('#wN').textContent = ME.admin.nama; $('#wU').textContent = '@' + ME.admin.username; $('#wA').textContent = ME.admin.nama.slice(0, 1).toUpperCase();
+  document.title = 'Panel Pengelola · ' + ME.brand;
+  go((location.hash || '#ringkasan').slice(1));
+}
+$('#who').onclick = e => { e.stopPropagation(); $('#menu').hidden = !$('#menu').hidden; };
+document.addEventListener('click', e => {
+  if (!e.target.closest('#menu')) $('#menu').hidden = true;
+  const m = e.target.closest('[data-m]'); if (!m) return; $('#menu').hidden = true;
+  if (m.dataset.m === 'out') { api('logout').catch(() => {}); D.store.del('dh_pusat'); TOK = null; showLogin(); }
+  if (m.dataset.m === 'pw') {
+    const ov = modal('Ganti password', `<label class="fld"><span>Password lama</span><input class="in" type="password" id="p0"></label><label class="fld"><span>Password baru (min. 8)</span><input class="in" type="password" id="p1"></label>`, `<button class="btn" data-x>Batal</button><button class="btn pri" id="pg">Simpan</button>`);
+    $('#pg', ov).onclick = ev => act(ev.currentTarget, async () => { await api('pw', { lama: $('#p0', ov).value, baru: $('#p1', ov).value }); ov.remove(); toast('Password diganti'); });
+  }
+});
+$$('#tabs .tab').forEach(t => t.onclick = () => go(t.dataset.t));
+function go(t) {
+  if (!$(`#tabs [data-t="${t}"]`)) t = 'ringkasan';
+  TAB = t; history.replaceState(null, '', '#' + t);
+  $$('#tabs .tab').forEach(x => x.classList.toggle('on', x.dataset.t === t));
+  $('#body').innerHTML = '<div class="card" style="padding:40px;text-align:center"><span class="spin d"></span></div>';
+  ({ ringkasan: vDash, toko: vToko, tagihan: vTagihan, paket: vPaket, voucher: vVoucher, pengumuman: vNews, pengaturan: vSet, log: vLog })[t]().catch(e => { $('#body').innerHTML = `<div class="err-box">${esc(e.message)}</div>`; });
+}
+function badgePeriksa(n) { const b = $('#nPeriksa'); b.hidden = !n; b.textContent = n; }
+
+/* ---------------- ringkasan ---------------- */
+async function vDash() {
+  const d = await api('dash'); badgePeriksa(d.menunggu);
+  const g = Object.entries(d.grafik), mx = Math.max(1, ...g.map(x => x[1]));
+  const df = Object.entries(d.daftar), mx2 = Math.max(1, ...df.map(x => x[1]));
+  const sel = (d.bulanIni - d.bulanLalu);
+  $('#body').innerHTML = `${!d.waSiap ? `<div class="alert">⚠️ Gateway WhatsApp belum diatur: kode verifikasi, pengingat tagihan, dan notifikasi tidak terkirim. <button class="btn sm" style="margin-left:auto" onclick="go('pengaturan')">Atur sekarang</button></div>` : ''}
+    ${d.menunggu ? `<div class="alert" style="background:var(--toskaS);color:#0A5C52">💳 ${d.menunggu} bukti bayar menunggu konfirmasi. <button class="btn sm pri" style="margin-left:auto" onclick="go('tagihan')">Periksa</button></div>` : ''}
+    <div class="kpi">
+      <div class="card kp"><small>Toko berbayar</small><b>${d.jumlah.aktif + d.jumlah.tenggang}</b><span>${d.jumlah.tenggang} masa tenggang</span></div>
+      <div class="card kp"><small>Masa coba</small><b>${d.jumlah.trial}</b><span>${d.baru30} daftar 30 hari terakhir</span></div>
+      <div class="card kp"><small>Pendapatan bulanan (MRR)</small><b>${rpk(d.mrr)}</b><span>dari toko aktif</span></div>
+      <div class="card kp"><small>Diterima bulan ini</small><b>${rpk(d.bulanIni)}</b><span style="color:${sel >= 0 ? '#0A6A5F' : '#9B2C25'}">${sel >= 0 ? '▲' : '▼'} ${rpk(Math.abs(sel))} vs bulan lalu</span></div>
+      <div class="card kp"><small>Konversi coba → bayar</small><b>${String(d.konversi).replace('.', ',')}%</b><span>${d.jumlah.baca} baca-saja · ${d.jumlah.beku} beku</span></div>
+    </div>
+    <div class="g2"><div class="card pn"><h3>Pendapatan 12 bulan</h3><div class="bars">${g.map(([k, v]) => `<div class="c" title="${BLN[+k.slice(5) - 1]} ${k.slice(0, 4)}: ${rp(v)}"><small>${v ? rpk(v).replace('Rp', '') : ''}</small><i style="height:${Math.round(100 * v / mx)}%"></i><small>${BLN[+k.slice(5) - 1]}</small></div>`).join('')}</div></div>
+      <div class="card pn"><h3>Pendaftaran 30 hari</h3><div class="bars mini">${df.map(([k, v]) => `<div class="c" title="${tgl(k)}: ${v} toko"><i style="height:${Math.round(100 * v / mx2)}%"></i></div>`).join('')}</div>
+        <h3 style="margin-top:18px">Toko aktif per paket</h3>${d.perPaket.map(p => `<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed var(--line);font-size:14px"><span>${esc(p.nama)}</span><b>${p.n}</b></div>`).join('')}</div></div>
+    <div class="g2"><div class="card pn"><h3>Segera berakhir (≤ 7 hari)</h3>${d.akanHabis.length ? `<div class="tw"><table><tbody>${d.akanHabis.map(t => `<tr class="ck" data-tk="${esc(t.id)}"><td><b>${esc(t.nama)}</b><small>${esc(t.slug)} · WA ${esc(t.wa)}</small></td><td>${stB(t)}</td><td>${esc(t.paketEfektif)}</td><td class="r">${tgl(t.berakhir)}<small>${sisaTx(t)}</small></td></tr>`).join('')}</tbody></table></div>` : '<p class="mut">Tidak ada.</p>'}</div>
+      <div class="card pn"><h3>Pendaftar terbaru</h3>${d.terbaru.map(t => `<div class="ck" data-tk="${esc(t.id)}" style="display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px dashed var(--line);cursor:pointer"><span style="flex:1"><b>${esc(t.nama)}</b><small class="mut" style="display:block">${tgl(t.dibuat)} · ${esc(t.pemilik)}</small></span>${stB(t)}</div>`).join('') || '<p class="mut">Belum ada toko.</p>'}</div></div>`;
+  $$('[data-tk]').forEach(r => r.onclick = () => tokoDetail(r.dataset.tk));
+}
+
+/* ---------------- toko ---------------- */
+async function vToko() {
+  const d = await api('toko', { q: ui.tokoQ, status: ui.tokoSt }); PAKET = d.paket;
+  $('#body').innerHTML = `<div class="tb"><input class="in" id="q" placeholder="Cari nama, alamat, pemilik, WA…" value="${esc(ui.tokoQ)}"><div class="seg" id="sf">${[['', 'Semua'], ['trial', 'Masa coba'], ['aktif', 'Aktif'], ['habis7', '≤7 hari'], ['tenggang', 'Tenggang'], ['baca', 'Baca-saja'], ['beku', 'Beku']].map(([k, n]) => `<button data-s="${k}" class="${ui.tokoSt === k ? 'on' : ''}">${n}</button>`).join('')}</div><span class="sp"></span><button class="btn pri" id="add">+ Tambah toko</button></div>
+    <div class="card tw">${d.toko.length ? `<table><thead><tr><th>Toko</th><th>Pemilik</th><th>Paket</th><th>Status</th><th>Berakhir</th><th>Aktif terakhir</th></tr></thead><tbody>${d.toko.map(t => `<tr class="ck" data-tk="${esc(t.id)}"><td><b>${esc(t.nama)}</b><small>${esc(t.slug)}</small></td><td>${esc(t.pemilik)}<small>${esc(t.wa)}</small></td><td>${esc(t.paketEfektif)}${t.trial ? `<small>pilihan: ${esc(t.paket)}</small>` : ''}</td><td>${stB(t)}</td><td>${tgl(t.berakhir)}<small>${sisaTx(t)}</small></td><td>${t.aktifTerakhir ? tgl(t.aktifTerakhir) + ' ' + t.aktifTerakhir.slice(11) : '–'}</td></tr>`).join('')}</tbody></table>` : '<p class="mut" style="padding:20px">Tidak ada toko.</p>'}</div>`;
+  let tm; $('#q').oninput = e => { clearTimeout(tm); tm = setTimeout(() => { ui.tokoQ = e.target.value; vToko().then(() => { const q = $('#q'); q.focus(); q.setSelectionRange(q.value.length, q.value.length); }); }, 350); };
+  $$('#sf [data-s]').forEach(b => b.onclick = () => { ui.tokoSt = b.dataset.s; vToko(); });
+  $$('[data-tk]').forEach(r => r.onclick = () => tokoDetail(r.dataset.tk));
+  $('#add').onclick = tokoBaru;
+}
+async function tokoDetail(id) {
+  const d = await api('tokoDetail', { id }).catch(e => (toast(e.message, 'err'), null)); if (!d) return;
+  const t = d.toko, u = d.pakai || {};
+  const ov = modal(esc(t.nama), `<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:14px">${stB(t)}<span class="bdg">${esc(t.paketEfektif)}</span><a href="${esc(t.url)}" target="_blank" rel="noopener" class="sm">${esc(t.url.replace(/^https?:\/\//, ''))} ↗</a></div>
+    ${t.beku ? `<div class="err-box">Dibekukan: ${esc(t.bekuAlasan || '-')}</div>` : ''}
+    <div class="g2" style="grid-template-columns:1fr 1fr"><dl class="dl"><dt>Pemilik</dt><dd>${esc(t.pemilik)}</dd><dt>WhatsApp</dt><dd><a href="https://wa.me/${esc(t.wa)}" target="_blank" rel="noopener">${esc(t.wa)}</a></dd><dt>Email</dt><dd>${esc(t.email || '–')}</dd><dt>Jenis usaha</dt><dd>${esc(t.jenis || '–')}</dd><dt>Terdaftar</dt><dd>${tgl(t.dibuat)}</dd><dt>Bayar pertama</dt><dd>${tgl(t.bayarPertama)}</dd><dt>Berakhir</dt><dd>${tgl(t.berakhir)} (${sisaTx(t)})</dd><dt>Kode referral</dt><dd>${esc(t.refKode)}${d.refDari ? ` · diajak ${esc(d.refDari.nama)}` : ''}</dd></dl>
+      <dl class="dl">${u.err ? `<dt>Data</dt><dd>${esc(u.err)}</dd>` : `<dt>Outlet</dt><dd>${u.outlet}</dd><dt>Pengguna aktif</dt><dd>${u.user}</dd><dt>Produk</dt><dd>${(u.produk || 0).toLocaleString('id-ID')}</dd><dt>Transaksi 30 hr</dt><dd>${(u.trx30 || 0).toLocaleString('id-ID')}</dd><dt>Omzet 30 hr</dt><dd>${rp(u.omzet30)}</dd><dt>Login terakhir</dt><dd>${u.loginTerakhir ? tgl(u.loginTerakhir) + ' ' + u.loginTerakhir.slice(11, 16) : '–'}</dd>`}<dt>Mengajak</dt><dd>${d.diajak.length ? d.diajak.map(x => esc(x.nama) + (x.bayar ? ' ✓' : '')).join(', ') : '–'}</dd></dl></div>
+    ${t.catatan ? `<div class="prev" style="margin-top:12px;white-space:pre-line;font-size:14px"><b>Catatan:</b> ${esc(t.catatan)}</div>` : ''}
+    <div class="acts" style="margin:16px 0"><button class="btn sm" id="dEd">Ubah data / paket</button><button class="btn sm" id="dHari">± Masa aktif</button><button class="btn sm" id="dTag">Buat tagihan</button><button class="btn sm pri" id="dMasuk" ${t.beku ? 'disabled' : ''}>Masuk sebagai toko ↗</button><button class="btn sm ${t.beku ? '' : 'err'}" id="dBeku">${t.beku ? 'Aktifkan lagi' : 'Bekukan'}</button><button class="btn sm err" id="dDel">Hapus permanen</button></div>
+    <h4 style="margin:6px 0 8px">Tagihan</h4><div class="tw">${d.tagihan.length ? `<table><tbody>${d.tagihan.map(b => `<tr><td><b>${esc(b.no)}</b><small>${tgl(b.dibuat)}</small></td><td>${esc(b.paket)} · ${b.bulan} bln</td><td class="r">${rp(b.total)}</td><td><span class="bdg ${TS[b.status][0]}">${TS[b.status][1]}</span></td><td>${b.mulai ? tgl(b.mulai) + ' – ' + tgl(b.sampai) : ''}</td></tr>`).join('')}</tbody></table>` : '<p class="mut">Belum ada.</p>'}</div>
+    <h4 style="margin:16px 0 8px">Riwayat</h4><div style="max-height:200px;overflow:auto;font-size:13px">${d.log.map(l => `<div style="padding:5px 0;border-bottom:1px dashed var(--line)"><span class="mut">${esc(l.waktu.slice(0, 16))} · ${esc(l.oleh)}</span> — <b>${esc(l.aksi)}</b> ${esc(l.detail)}</div>`).join('') || '<span class="mut">–</span>'}</div>`, '', 'xl');
+  const reload = () => { ov.remove(); tokoDetail(id); if (TAB === 'toko') vToko(); if (TAB === 'ringkasan') vDash(); };
+  $('#dEd', ov).onclick = () => tokoEdit(t, d.paket, reload);
+  $('#dHari', ov).onclick = () => {
+    const o2 = modal('Ubah masa aktif', `<p class="mut" style="margin-top:0">Berakhir sekarang: <b>${tgl(t.berakhir)}</b>. Isi minus untuk mengurangi.</p><div class="f2"><label class="fld"><span>Jumlah hari</span><input class="in" id="h" type="number" value="7"></label><label class="fld"><span>Alasan</span><input class="in" id="al" placeholder="mis. kompensasi gangguan"></label></div>`, `<button class="btn" data-x>Batal</button><button class="btn pri" id="ok">Simpan</button>`);
+    $('#ok', o2).onclick = e => act(e.currentTarget, async () => { await api('tokoTambahHari', { id, hari: +$('#h', o2).value, alasan: $('#al', o2).value }); o2.remove(); toast('Masa aktif diubah'); reload(); });
+  };
+  $('#dTag', ov).onclick = () => tagihanBaru(t.id);
+  $('#dMasuk', ov).onclick = e => act(e.currentTarget, async () => { const r = await api('masuk', { id }); window.open(r.url, '_blank', 'noopener'); });
+  $('#dBeku', ov).onclick = async e => {
+    if (t.beku) { if (await ask('Aktifkan kembali toko <b>' + esc(t.nama) + '</b>?')) act(e.currentTarget, async () => { await api('tokoBeku', { id, beku: 0 }); toast('Toko aktif lagi'); reload(); }); return; }
+    const o2 = modal('Bekukan toko', `<p style="margin-top:0">Semua pengguna toko <b>${esc(t.nama)}</b> langsung keluar dan tidak bisa masuk sampai diaktifkan lagi. Data tetap aman.</p><label class="fld"><span>Alasan (ditampilkan ke toko)</span><input class="in" id="al" placeholder="mis. pelanggaran ketentuan"></label>`, `<button class="btn" data-x>Batal</button><button class="btn err" id="ok">Bekukan</button>`);
+    $('#ok', o2).onclick = ev => act(ev.currentTarget, async () => { await api('tokoBeku', { id, beku: 1, alasan: $('#al', o2).value }); o2.remove(); toast('Toko dibekukan'); reload(); });
+  };
+  $('#dDel', ov).onclick = () => {
+    const o2 = modal('Hapus toko permanen', `<div class="err-box">Database, foto, dan semua data toko <b>${esc(t.nama)}</b> akan dihapus selamanya dan tidak bisa dikembalikan.</div><label class="fld"><span>Ketik <b>${esc(t.slug)}</b> untuk konfirmasi</span><input class="in" id="kf" autocapitalize="none"></label>`, `<button class="btn" data-x>Batal</button><button class="btn err" id="ok">Hapus permanen</button>`);
+    $('#ok', o2).onclick = e => act(e.currentTarget, async () => { await api('tokoHapus', { id, konfirmasi: $('#kf', o2).value }); o2.remove(); ov.remove(); toast('Toko dihapus'); go(TAB); });
+  };
+}
+function tokoEdit(t, paket, done) {
+  const ov = modal('Ubah data toko', `<div class="f2"><label class="fld"><span>Nama toko</span><input class="in" id="n" value="${esc(t.nama)}"></label><label class="fld"><span>Pemilik</span><input class="in" id="p" value="${esc(t.pemilik)}"></label>
+    <label class="fld"><span>WhatsApp</span><input class="in" id="w" value="${esc(t.wa)}"></label><label class="fld"><span>Email</span><input class="in" id="e" value="${esc(t.email)}"></label>
+    <label class="fld"><span>Paket</span><select class="in" id="pk">${paket.map(p => `<option value="${esc(p.id)}" ${p.id === t.paketId ? 'selected' : ''}>${esc(p.nama)} · ${rp(p.hargaBulan)}/bln${p.aktif ? '' : ' (nonaktif)'}</option>`).join('')}</select></label><label class="fld"><span>Berakhir</span><input class="in" id="b" type="date" value="${esc(t.berakhir)}"></label></div>
+    <label class="sw"><input type="checkbox" id="tr" ${t.trial ? 'checked' : ''}> Masih masa coba (memakai paket masa coba, bukan paket di atas)</label>
+    <label class="fld"><span>Catatan internal</span><textarea class="in" id="c" rows="3">${esc(t.catatan)}</textarea></label>`, `<button class="btn" data-x>Batal</button><button class="btn pri" id="ok">Simpan</button>`, 'lg');
+  $('#ok', ov).onclick = e => act(e.currentTarget, async () => { await api('tokoSimpan', { id: t.id, nama: $('#n', ov).value, pemilik: $('#p', ov).value, wa: $('#w', ov).value, email: $('#e', ov).value, paketId: $('#pk', ov).value, berakhir: $('#b', ov).value, trial: $('#tr', ov).checked, catatan: $('#c', ov).value }); ov.remove(); toast('Data toko disimpan'); done(); });
+}
+async function tokoBaru() {
+  const info = await fetch('api.php', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ m: 'saas', a: 'info' }) }).then(r => r.json());
+  const ov = modal('Tambah toko manual', `<p class="mut" style="margin-top:0">Untuk pelanggan yang dibantu mendaftar. Tanpa verifikasi WA; masa coba berlaku seperti biasa.</p>
+    <div class="f2"><label class="fld"><span>Nama toko</span><input class="in" id="n"></label><label class="fld"><span>Alamat (subdomain)</span><input class="in" id="s" placeholder="namatoko" autocapitalize="none"></label>
+    <label class="fld"><span>Pemilik</span><input class="in" id="p"></label><label class="fld"><span>WhatsApp</span><input class="in" id="w"></label>
+    <label class="fld"><span>Username admin</span><input class="in" id="u" autocapitalize="none"></label><label class="fld"><span>Password admin</span><input class="in" id="pw" value="${Math.random().toString(36).slice(2, 10)}"></label>
+    <label class="fld"><span>Jenis usaha</span><select class="in" id="j"><option value="">– Lainnya –</option>${info.jenis.map(j => `<option value="${esc(j.id)}">${esc(j.nama)}</option>`).join('')}</select></label><label class="fld"><span>Paket pilihan</span><select class="in" id="pk">${info.paket.map(p => `<option value="${esc(p.id)}">${esc(p.nama)}</option>`).join('')}</select></label></div>`,
+    `<button class="btn" data-x>Batal</button><button class="btn pri" id="ok">Buat toko</button>`, 'lg');
+  $('#n', ov).oninput = e => { $('#s', ov).value = e.target.value.toLowerCase().replace(/[^a-z0-9]+/g, '').slice(0, 30); };
+  $('#ok', ov).onclick = e => act(e.currentTarget, async () => {
+    const r = await api('tokoBuat', { nama: $('#n', ov).value, slug: $('#s', ov).value, pemilik: $('#p', ov).value, wa: $('#w', ov).value, username: $('#u', ov).value, password: $('#pw', ov).value, jenis: $('#j', ov).value, paket: $('#pk', ov).value });
+    ov.remove(); modal('Toko dibuat', `<p style="margin-top:0">Kirim data ini ke pemilik toko:</p><pre class="prev" style="white-space:pre-wrap;font:inherit">Alamat: ${esc(r.toko.url)}\nUsername: ${esc(r.username)}\nPassword: ${esc($('#pw', ov).value)}</pre>`, `<button class="btn pri" data-x>Selesai</button>`); go('toko');
+  });
+}
+
+/* ---------------- tagihan ---------------- */
+async function vTagihan() {
+  const d = await api('tagihan', { status: ui.tagSt, q: ui.tagQ }); badgePeriksa(d.periksa);
+  $('#body').innerHTML = `<div class="tb"><div class="seg" id="sf">${[['periksa', `Perlu diperiksa${d.periksa ? ' (' + d.periksa + ')' : ''}`], ['menunggu', 'Menunggu'], ['dibayar', 'Lunas'], ['batal', 'Batal'], ['', 'Semua']].map(([k, n]) => `<button data-s="${k}" class="${ui.tagSt === k ? 'on' : ''}">${n}</button>`).join('')}</div><input class="in" id="q" placeholder="Cari no. tagihan / toko" value="${esc(ui.tagQ)}"><span class="sp"></span><button class="btn pri" id="add">+ Buat tagihan</button></div>
+    <div class="card tw">${d.tagihan.length ? `<table><thead><tr><th>No.</th><th>Toko</th><th>Paket</th><th class="r">Total</th><th>Status</th><th>Bukti</th><th></th></tr></thead><tbody>${d.tagihan.map(b => `<tr><td><b>${esc(b.no)}</b><small>${tgl(b.dibuat)} · ${esc(b.dibuatOleh)}</small></td><td>${esc(b.toko || '(dihapus)')}<small>${esc(b.slug)}</small></td><td>${esc(b.paket)} · ${b.bulan} bln${b.diskon ? `<small>${esc(b.diskonKet)}</small>` : ''}</td><td class="r"><b>${rp(b.total)}</b>${b.diskon ? `<small>dari ${rp(b.harga)}</small>` : ''}</td>
+      <td><span class="bdg ${TS[b.status][0]}">${b.status === 'menunggu' && b.adaBukti ? 'Perlu diperiksa' : TS[b.status][1]}</span>${b.status === 'dibayar' ? `<small>${tgl(b.dibayar)} · ${esc(b.dikonfirmasi)}</small>` : b.catatan ? `<small>${esc(b.catatan)}</small>` : ''}</td>
+      <td>${b.adaBukti ? `<button class="btn sm" data-bk="${esc(b.id)}">Lihat</button><small>${esc(b.buktiPada)}</small>` : '–'}</td>
+      <td class="r" style="white-space:nowrap">${b.status === 'menunggu' ? `<button class="btn sm pri" data-ok="${esc(b.id)}">Konfirmasi</button> ${b.adaBukti ? `<button class="btn sm" data-no="${esc(b.id)}">Tolak</button>` : ''} <button class="btn sm err" data-bt="${esc(b.id)}" title="Batalkan">✕</button>` : ''} <button class="btn sm" data-iv="${esc(b.id)}">Invoice</button></td></tr>`).join('')}</tbody></table>` : `<p class="mut" style="padding:20px">${ui.tagSt === 'periksa' ? 'Tidak ada bukti bayar yang perlu diperiksa. 👍' : 'Tidak ada tagihan.'}</p>`}</div>`;
+  $$('#sf [data-s]').forEach(b => b.onclick = () => { ui.tagSt = b.dataset.s; vTagihan(); });
+  let tm; $('#q').oninput = e => { clearTimeout(tm); tm = setTimeout(() => { ui.tagQ = e.target.value; vTagihan().then(() => { const q = $('#q'); q.focus(); q.setSelectionRange(q.value.length, q.value.length); }); }, 350); };
+  $('#add').onclick = () => tagihanBaru('');
+  const B = id => d.tagihan.find(x => x.id === id);
+  $$('[data-bk]').forEach(b => b.onclick = () => act(b, async () => {
+    const r = await api('bukti', { id: b.dataset.bk }), t = B(b.dataset.bk);
+    const ov = modal('Bukti bayar ' + esc(t.no), `<div style="margin-bottom:10px"><b>${esc(t.toko)}</b> · ${esc(t.paket)} ${t.bulan} bln · <b>${rp(t.total)}</b>${r.ket ? `<div class="mut sm">Catatan toko: ${esc(r.ket)}</div>` : ''}</div>${r.mime === 'application/pdf' ? `<iframe src="${r.data}" style="width:100%;height:60vh;border:1px solid var(--line);border-radius:12px" title="Bukti bayar"></iframe>` : `<img src="${r.data}" alt="Bukti transfer" style="max-width:100%;border-radius:12px;border:1px solid var(--line)">`}`,
+      `<button class="btn" data-x>Tutup</button><button class="btn" id="no">Tolak</button><button class="btn pri" id="ok">Konfirmasi lunas</button>`, 'lg');
+    $('#ok', ov).onclick = () => { ov.remove(); konfirmasi(t); }; $('#no', ov).onclick = () => { ov.remove(); tolak(t); };
+  }));
+  $$('[data-ok]').forEach(b => b.onclick = () => konfirmasi(B(b.dataset.ok)));
+  $$('[data-no]').forEach(b => b.onclick = () => tolak(B(b.dataset.no)));
+  $$('[data-bt]').forEach(b => b.onclick = async () => { const t = B(b.dataset.bt); if (await ask(`Batalkan tagihan <b>${esc(t.no)}</b>?`, 'Batalkan', true)) act(b, async () => { await api('tagihanBatal', { id: t.id }); toast('Tagihan dibatalkan'); vTagihan(); }); });
+  $$('[data-iv]').forEach(b => b.onclick = () => invoice(b.dataset.iv));
+}
+async function konfirmasi(t) {
+  if (!await ask(`Konfirmasi pembayaran <b>${esc(t.no)}</b> dari <b>${esc(t.toko)}</b> sebesar <b>${rp(t.total)}</b>?<br><span class="mut sm">Masa aktif toko langsung diperpanjang dan toko mendapat pesan WhatsApp.</span>`, 'Konfirmasi lunas')) return;
+  try { const r = await api('konfirmasi', { id: t.id, filter: ui.tagSt }); toast(`Lunas · aktif ${tgl(r.periode.mulai)} – ${tgl(r.periode.sampai)}`); vTagihan(); } catch (e) { toast(e.message, 'err'); }
+}
+function tolak(t) {
+  const ov = modal('Tolak bukti bayar', `<p style="margin-top:0">${esc(t.no)} · ${esc(t.toko)} · ${rp(t.total)}</p><label class="fld"><span>Alasan (dikirim ke toko lewat WhatsApp)</span><input class="in" id="al" placeholder="mis. nominal kurang Rp10.000 / bukti tidak terbaca"></label>`, `<button class="btn" data-x>Batal</button><button class="btn err" id="ok">Tolak</button>`);
+  $('#ok', ov).onclick = e => act(e.currentTarget, async () => { await api('tolak', { id: t.id, alasan: $('#al', ov).value, filter: ui.tagSt }); ov.remove(); toast('Bukti ditolak, toko diberi tahu'); vTagihan(); });
+}
+async function tagihanBaru(tokoId) {
+  const [tk, pk] = await Promise.all([api('toko', {}), api('paket')]);
+  const ov = modal('Buat tagihan', `<label class="fld"><span>Toko</span><select class="in" id="t">${tk.toko.map(t => `<option value="${esc(t.id)}" ${t.id === tokoId ? 'selected' : ''}>${esc(t.nama)} (${esc(t.slug)})</option>`).join('')}</select></label>
+    <div class="f3"><label class="fld"><span>Paket</span><select class="in" id="p">${pk.paket.filter(p => p.aktif).map(p => `<option value="${esc(p.id)}">${esc(p.nama)}</option>`).join('')}</select></label><label class="fld"><span>Lama</span><select class="in" id="b">${[1, 3, 6, 12].map(b => `<option value="${b}">${b} bulan</option>`).join('')}</select></label><label class="fld"><span>Voucher</span><input class="in" id="v" style="text-transform:uppercase"></label></div>
+    <label class="fld"><span>Catatan</span><input class="in" id="c" placeholder="opsional"></label>
+    <div class="prev" id="pv"><span class="spin d"></span></div>
+    <label class="sw" style="margin-top:12px"><input type="checkbox" id="l"> Sudah dibayar (langsung tandai lunas & perpanjang)</label>`, `<button class="btn" data-x>Batal</button><button class="btn pri" id="ok">Buat tagihan</button>`, 'lg');
+  const val = () => ({ tokoId: $('#t', ov).value, paket: $('#p', ov).value, bulan: +$('#b', ov).value, voucher: $('#v', ov).value });
+  const pv = async () => { try { const h = await api('hitung', val()); $('#pv', ov).innerHTML = `<div style="display:flex;justify-content:space-between"><span>Harga</span><b>${rp(h.harga)}</b></div>${h.diskon ? `<div style="display:flex;justify-content:space-between"><span>${esc(h.diskonKet)}</span><b>−${rp(h.diskon)}</b></div>` : ''}<div style="display:flex;justify-content:space-between;font-size:17px;margin-top:6px"><b>Total</b><b>${rp(h.total)}</b></div><div class="mut sm" style="margin-top:6px">Periode bila dibayar hari ini: ${tgl(h.periode.mulai)} – ${tgl(h.periode.sampai)} ${esc(h.periode.ket)}</div>`; } catch (e) { $('#pv', ov).innerHTML = `<span style="color:#9B2C25">${esc(e.message)}</span>`; } };
+  ['#t', '#p', '#b'].forEach(s => $(s, ov).onchange = pv); $('#v', ov).onchange = pv; pv();
+  $('#ok', ov).onclick = e => act(e.currentTarget, async () => { const r = await api('tagihanBuat', Object.assign(val(), { catatan: $('#c', ov).value, lunas: $('#l', ov).checked })); ov.remove(); toast(r.baru.status === 'dibayar' ? 'Tagihan dibuat & lunas' : 'Tagihan dibuat, toko diberi tahu lewat WhatsApp'); if (TAB === 'tagihan') { ui.tagSt = ''; vTagihan(); } });
+}
+async function invoice(id) {
+  const r = await api('invoice', { id }).catch(e => (toast(e.message, 'err'), null)); if (!r) return; const t = r.tagihan, P = r.penjual, K = r.toko;
+  const w = window.open('', '_blank'); if (!w) return toast('Izinkan pop-up untuk melihat invoice', 'err');
+  w.document.write(`<!doctype html><html lang="id"><head><meta charset="utf-8"><title>${esc(t.no)}</title><style>body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;color:#14212B;max-width:760px;margin:30px auto;padding:0 24px}h1{margin:0;font-size:28px}table{width:100%;border-collapse:collapse;margin:22px 0}td,th{padding:10px;border-bottom:1px solid #E2E6E1;text-align:left}th{font-size:12px;text-transform:uppercase;color:#5B6870}.r{text-align:right}.tot td{font-weight:800;font-size:18px;border-bottom:0}.m{color:#5B6870;font-size:14px}.g{display:flex;justify-content:space-between;gap:20px;margin-top:22px}pre{font:inherit;white-space:pre-line;background:#F5F6F3;padding:12px;border-radius:10px}@media print{button{display:none}}</style></head><body>
+    <div class="g" style="margin-top:0"><div><h1>${esc(P.brand)}</h1><div class="m">${esc(P.url.replace(/^https?:\/\//, ''))}${P.kontakWa ? ' · WA ' + esc(P.kontakWa) : ''}</div></div><div style="text-align:right"><h1>INVOICE</h1><div class="m">${esc(t.no)}</div><b>${t.status === 'dibayar' ? 'LUNAS' : t.status === 'batal' ? 'BATAL' : 'BELUM DIBAYAR'}</b></div></div>
+    <div class="g"><div><div class="m">Ditagihkan kepada</div><b>${esc(K.nama)}</b><div class="m">${esc(K.pemilik)}<br>WA ${esc(K.wa)}${K.email ? '<br>' + esc(K.email) : ''}</div></div><div style="text-align:right"><div class="m">Tanggal</div><b>${tgl(t.dibuat)}</b>${t.dibayar ? `<div class="m">Dibayar ${tgl(t.dibayar)}</div>` : ''}</div></div>
+    <table><thead><tr><th>Deskripsi</th><th class="r">Jumlah</th></tr></thead><tbody><tr><td>Langganan ${esc(P.brand)} paket ${esc(t.paket)} · ${t.bulan} bulan${t.mulai ? `<div class="m">${tgl(t.mulai)} – ${tgl(t.sampai)}</div>` : ''}</td><td class="r">${rp(t.harga)}</td></tr>${t.diskon ? `<tr><td>${esc(t.diskonKet)}</td><td class="r">−${rp(t.diskon)}</td></tr>` : ''}<tr class="tot"><td>Total</td><td class="r">${rp(t.total)}</td></tr></tbody></table>
+    ${t.status === 'menunggu' ? `<div class="m">Pembayaran ke:</div><pre>${esc(P.rekening)}</pre>` : ''}<button onclick="print()" style="padding:10px 18px;border-radius:10px;border:0;background:#0B7A6D;color:#fff;font-weight:700;cursor:pointer">Cetak / simpan PDF</button></body></html>`);
+  w.document.close();
+}
+
+/* ---------------- paket ---------------- */
+async function vPaket() {
+  const d = await api('paket'); MODUL = d.modul; PAKET = d.paket;
+  $('#body').innerHTML = `<div class="tb"><div class="mut">Harga, menu yang terbuka, dan batas jumlah per paket. Perubahan langsung berlaku untuk semua toko di paket tersebut.</div><span class="sp"></span><button class="btn pri" id="add">+ Paket baru</button></div>
+    <div class="pkg">${d.paket.map(p => `<div class="card pkc" style="${p.aktif ? '' : 'opacity:.6'}"><h3>${esc(p.nama)} ${p.unggulan ? '<span class="bdg b">Unggulan</span>' : ''}${!p.aktif ? '<span class="bdg">Nonaktif</span>' : ''}${d.trialPaket === p.id ? '<span class="bdg t">Masa coba</span>' : ''}</h3><div class="mut sm">${esc(p.deskripsi)}</div>
+      <div class="pr">${rp(p.hargaBulan)}<small> /bulan</small></div><div class="mut sm">Tahunan: ${p.hargaTahun ? rp(p.hargaTahun) + (p.hargaBulan * 12 > p.hargaTahun ? ' (hemat ' + rp(p.hargaBulan * 12 - p.hargaTahun) + ')' : '') : '12 × bulanan'}</div>
+      <div class="mods">${Object.entries(MODUL).map(([k, n]) => `<span class="bdg ${p.modul.includes(k) ? 't' : ''}" style="${p.modul.includes(k) ? '' : 'opacity:.45;text-decoration:line-through'}">${esc(n)}</span>`).join('')}</div>
+      <div class="sm">Outlet <b>${lim(p.maxOutlet)}</b> · Pengguna <b>${lim(p.maxUser)}</b> · Produk <b>${lim(p.maxProduk)}</b></div>
+      <div class="mut sm">Dipakai ${p.dipakai} toko</div><div class="acts" style="margin-top:auto"><button class="btn sm" data-ed="${esc(p.id)}">Ubah</button>${p.dipakai ? '' : `<button class="btn sm err" data-del="${esc(p.id)}">Hapus</button>`}</div></div>`).join('')}</div>`;
+  $('#add').onclick = () => paketForm({ id: '', nama: '', deskripsi: '', hargaBulan: 0, hargaTahun: 0, modul: ['kasir', 'inventaris', 'laporan'], maxOutlet: 0, maxUser: 0, maxProduk: 0, aktif: true, unggulan: false, urut: d.paket.length + 1 });
+  $$('[data-ed]').forEach(b => b.onclick = () => paketForm(d.paket.find(p => p.id === b.dataset.ed)));
+  $$('[data-del]').forEach(b => b.onclick = async () => { if (await ask('Hapus paket ini?', 'Hapus', true)) act(b, async () => { await api('paketHapus', { id: b.dataset.del }); toast('Paket dihapus'); vPaket(); }); });
+}
+function paketForm(p) {
+  const ov = modal(p.id ? 'Ubah paket ' + esc(p.nama) : 'Paket baru', `<div class="f2"><label class="fld"><span>Nama paket</span><input class="in" id="n" value="${esc(p.nama)}"></label><label class="fld"><span>Urutan tampil</span><input class="in" id="u" type="number" value="${p.urut}"></label></div>
+    <label class="fld"><span>Deskripsi singkat</span><input class="in" id="ds" value="${esc(p.deskripsi)}" maxlength="255"></label>
+    <div class="f2"><label class="fld"><span>Harga per bulan (Rp)</span><input class="in" id="hb" inputmode="numeric" value="${p.hargaBulan}"></label><label class="fld"><span>Harga 12 bulan (Rp)</span><input class="in" id="ht" inputmode="numeric" value="${p.hargaTahun}"></label></div>
+    <p class="help" id="hint"></p>
+    <div class="fld"><span style="display:block;font-size:13px;font-weight:700;margin-bottom:8px">Menu yang terbuka di paket ini</span><div class="chk">${Object.entries(MODUL).map(([k, n]) => `<label><input type="checkbox" value="${k}" ${p.modul.includes(k) ? 'checked' : ''}> ${esc(n)}</label>`).join('')}</div></div>
+    <div class="f3"><label class="fld"><span>Maks. outlet</span><input class="in" id="mo" type="number" min="0" value="${p.maxOutlet}"></label><label class="fld"><span>Maks. pengguna aktif</span><input class="in" id="mu" type="number" min="0" value="${p.maxUser}"></label><label class="fld"><span>Maks. produk</span><input class="in" id="mp" type="number" min="0" value="${p.maxProduk}"></label></div>
+    <p class="help">Isi 0 untuk tanpa batas. Outlet = lokasi bertipe toko (gudang tidak dihitung). Toko yang sudah melebihi batas tetap aman, hanya tidak bisa menambah lagi.</p>
+    <label class="sw"><input type="checkbox" id="ak" ${p.aktif ? 'checked' : ''}> Aktif (bisa dipilih toko)</label><label class="sw"><input type="checkbox" id="un" ${p.unggulan ? 'checked' : ''}> Tandai “Paling populer”</label>`,
+    `<button class="btn" data-x>Batal</button><button class="btn pri" id="ok">Simpan paket</button>`, 'lg');
+  const num = s => +String($(s, ov).value).replace(/\D/g, '') || 0;
+  const hint = () => { const b = num('#hb'), t = num('#ht'); $('#hint', ov).textContent = t ? (t < b * 12 ? `Bayar tahunan hemat ${rp(b * 12 - t)} (${Math.round(100 - 100 * t / (b * 12))}%) dibanding 12 × ${rp(b)}.` : 'Harga tahunan tidak lebih murah dari 12 × bulanan.') : `Kosongkan / 0 = 12 × ${rp(b)} = ${rp(b * 12)}.`; };
+  ['#hb', '#ht'].forEach(s => $(s, ov).oninput = hint); hint();
+  $('#ok', ov).onclick = e => act(e.currentTarget, async () => {
+    await api('paketSimpan', { id: p.id, nama: $('#n', ov).value, deskripsi: $('#ds', ov).value, hargaBulan: num('#hb'), hargaTahun: num('#ht'), modul: $$('.chk input:checked', ov).map(x => x.value), maxOutlet: +$('#mo', ov).value || 0, maxUser: +$('#mu', ov).value || 0, maxProduk: +$('#mp', ov).value || 0, aktif: $('#ak', ov).checked, unggulan: $('#un', ov).checked, urut: +$('#u', ov).value || 0 });
+    ov.remove(); toast('Paket disimpan'); vPaket();
+  });
+}
+
+/* ---------------- voucher ---------------- */
+async function vVoucher() {
+  const d = await api('voucher'); PAKET = d.paket;
+  $('#body').innerHTML = `<div class="tb"><div class="mut">Kode potongan yang diketik toko saat membuat tagihan.</div><span class="sp"></span><button class="btn pri" id="add">+ Voucher baru</button></div>
+    <div class="card tw">${d.voucher.length ? `<table><thead><tr><th>Kode</th><th>Potongan</th><th>Berlaku</th><th>Terpakai</th><th>Status</th><th></th></tr></thead><tbody>${d.voucher.map(v => `<tr><td><b style="font-family:ui-monospace,monospace">${esc(v.kode)}</b><small>${esc(v.ket)}</small></td><td>${v.jenis === 'persen' ? v.nilai + '%' : rp(v.nilai)}<small>min. ${v.minBulan} bulan${v.paket.length ? ' · ' + v.paket.map(id => esc((PAKET.find(p => p.id === id) || {}).nama || id)).join(', ') : ' · semua paket'}</small></td><td>${v.sampai ? 's.d. ' + tgl(v.sampai) : 'Tanpa batas waktu'}</td><td>${v.terpakai}${v.kuota ? ' / ' + v.kuota : ''}</td><td><span class="bdg ${v.aktif && !v.habis ? 't' : ''}">${!v.aktif ? 'Nonaktif' : v.habis ? 'Habis' : 'Aktif'}</span></td><td class="r"><button class="btn sm" data-ed="${esc(v.kode)}">Ubah</button> ${v.terpakai ? '' : `<button class="btn sm err" data-del="${esc(v.kode)}">Hapus</button>`}</td></tr>`).join('')}</tbody></table>` : '<p class="mut" style="padding:20px">Belum ada voucher.</p>'}</div>`;
+  $('#add').onclick = () => voucherForm(null);
+  $$('[data-ed]').forEach(b => b.onclick = () => voucherForm(d.voucher.find(v => v.kode === b.dataset.ed)));
+  $$('[data-del]').forEach(b => b.onclick = async () => { if (await ask('Hapus voucher ' + esc(b.dataset.del) + '?', 'Hapus', true)) act(b, async () => { await api('voucherHapus', { kode: b.dataset.del }); vVoucher(); }); });
+}
+function voucherForm(v) {
+  const x = v || { kode: '', jenis: 'persen', nilai: 10, kuota: 0, sampai: '', paket: [], minBulan: 1, aktif: true, ket: '' };
+  const ov = modal(v ? 'Ubah voucher' : 'Voucher baru', `<div class="f2"><label class="fld"><span>Kode</span><input class="in" id="k" value="${esc(x.kode)}" ${v ? 'readonly' : ''} style="text-transform:uppercase;font-family:ui-monospace,monospace" placeholder="mis. MERDEKA20"></label><label class="fld"><span>Keterangan</span><input class="in" id="ket" value="${esc(x.ket)}"></label>
+    <label class="fld"><span>Jenis potongan</span><select class="in" id="j"><option value="persen" ${x.jenis === 'persen' ? 'selected' : ''}>Persen (%)</option><option value="nominal" ${x.jenis === 'nominal' ? 'selected' : ''}>Nominal (Rp)</option></select></label><label class="fld"><span>Nilai</span><input class="in" id="n" inputmode="numeric" value="${x.nilai}"></label>
+    <label class="fld"><span>Kuota pemakaian (0 = tanpa batas)</span><input class="in" id="q" type="number" min="0" value="${x.kuota}"></label><label class="fld"><span>Berlaku sampai (kosong = selamanya)</span><input class="in" id="s" type="date" value="${esc(x.sampai || '')}"></label>
+    <label class="fld"><span>Minimal lama langganan</span><select class="in" id="mb">${[1, 3, 6, 12].map(b => `<option value="${b}" ${x.minBulan === b ? 'selected' : ''}>${b} bulan</option>`).join('')}</select></label></div>
+    <div class="fld"><span style="display:block;font-size:13px;font-weight:700;margin-bottom:8px">Berlaku untuk paket (kosong = semua)</span><div class="chk">${PAKET.map(p => `<label><input type="checkbox" value="${esc(p.id)}" ${x.paket.includes(p.id) ? 'checked' : ''}> ${esc(p.nama)}</label>`).join('')}</div></div>
+    <label class="sw"><input type="checkbox" id="a" ${x.aktif ? 'checked' : ''}> Aktif</label>`, `<button class="btn" data-x>Batal</button><button class="btn pri" id="ok">Simpan</button>`, 'lg');
+  $('#ok', ov).onclick = e => act(e.currentTarget, async () => { await api('voucherSimpan', { lama: v ? v.kode : '', kode: $('#k', ov).value, ket: $('#ket', ov).value, jenis: $('#j', ov).value, nilai: +String($('#n', ov).value).replace(/\D/g, ''), kuota: +$('#q', ov).value || 0, sampai: $('#s', ov).value, minBulan: +$('#mb', ov).value, paket: $$('.chk input:checked', ov).map(i => i.value), aktif: $('#a', ov).checked }); ov.remove(); toast('Voucher disimpan'); vVoucher(); });
+}
+
+/* ---------------- pengumuman ---------------- */
+async function vNews() {
+  const d = await api('pengumuman'); PAKET = d.paket;
+  const tg = t => t === 'semua' ? 'Semua toko' : t === 'trial' ? 'Toko masa coba' : t === 'bayar' ? 'Toko berbayar' : 'Paket ' + ((PAKET.find(p => 'paket:' + p.id === t) || {}).nama || t);
+  $('#body').innerHTML = `<div class="tb"><div class="mut">Tampil di Beranda toko (semua pengguna). Cocok untuk info fitur baru, jadwal pemeliharaan, atau promo.</div><span class="sp"></span><button class="btn pri" id="add">+ Pengumuman</button></div>
+    <div style="display:grid;gap:12px">${d.pengumuman.map(n => `<div class="card" style="padding:16px;display:flex;gap:14px;align-items:flex-start;border-left:5px solid ${n.tipe === 'penting' ? 'var(--koral)' : n.tipe === 'promo' ? 'var(--amber)' : 'var(--biru)'}"><div style="flex:1"><b>${esc(n.judul)}</b> <span class="bdg ${n.tayang ? 't' : ''}">${n.tayang ? 'Tayang' : !n.aktif ? 'Nonaktif' : 'Terjadwal / selesai'}</span><div class="mut sm">${tg(n.target)} · ${tgl(n.mulai)}${n.sampai ? ' – ' + tgl(n.sampai) : ''}</div>${n.isi ? `<p style="margin:6px 0 0;white-space:pre-line;font-size:14px">${esc(n.isi)}</p>` : ''}</div><div class="acts"><button class="btn sm" data-ed="${esc(n.id)}">Ubah</button><button class="btn sm err" data-del="${esc(n.id)}">Hapus</button></div></div>`).join('') || '<div class="card mut" style="padding:20px">Belum ada pengumuman.</div>'}</div>`;
+  $('#add').onclick = () => newsForm(null);
+  $$('[data-ed]').forEach(b => b.onclick = () => newsForm(d.pengumuman.find(n => n.id === b.dataset.ed)));
+  $$('[data-del]').forEach(b => b.onclick = async () => { if (await ask('Hapus pengumuman ini?', 'Hapus', true)) act(b, async () => { await api('pengumumanHapus', { id: b.dataset.del }); vNews(); }); });
+}
+function newsForm(n) {
+  const x = n || { id: '', judul: '', isi: '', tipe: 'info', target: 'semua', mulai: new Date().toISOString().slice(0, 10), sampai: '', aktif: true };
+  const ov = modal(n ? 'Ubah pengumuman' : 'Pengumuman baru', `<label class="fld"><span>Judul</span><input class="in" id="j" value="${esc(x.judul)}" maxlength="120"></label><label class="fld"><span>Isi</span><textarea class="in" id="i" rows="4">${esc(x.isi)}</textarea></label>
+    <div class="f2"><label class="fld"><span>Jenis</span><select class="in" id="t">${[['info', '📢 Info'], ['penting', '⚠️ Penting'], ['promo', '🎁 Promo']].map(([k, l]) => `<option value="${k}" ${x.tipe === k ? 'selected' : ''}>${l}</option>`).join('')}</select></label>
+    <label class="fld"><span>Tampil untuk</span><select class="in" id="g">${[['semua', 'Semua toko'], ['trial', 'Toko masa coba'], ['bayar', 'Toko berbayar'], ...PAKET.map(p => ['paket:' + p.id, 'Paket ' + p.nama])].map(([k, l]) => `<option value="${esc(k)}" ${x.target === k ? 'selected' : ''}>${esc(l)}</option>`).join('')}</select></label>
+    <label class="fld"><span>Mulai tayang</span><input class="in" id="m" type="date" value="${esc(x.mulai)}"></label><label class="fld"><span>Selesai (kosong = terus)</span><input class="in" id="s" type="date" value="${esc(x.sampai || '')}"></label></div>
+    <label class="sw"><input type="checkbox" id="a" ${x.aktif ? 'checked' : ''}> Aktif</label>`, `<button class="btn" data-x>Batal</button><button class="btn pri" id="ok">Simpan</button>`, 'lg');
+  $('#ok', ov).onclick = e => act(e.currentTarget, async () => { await api('pengumumanSimpan', { id: x.id, judul: $('#j', ov).value, isi: $('#i', ov).value, tipe: $('#t', ov).value, target: $('#g', ov).value, mulai: $('#m', ov).value, sampai: $('#s', ov).value, aktif: $('#a', ov).checked }); ov.remove(); toast('Pengumuman disimpan'); vNews(); });
+}
+
+/* ---------------- pengaturan ---------------- */
+async function vSet() {
+  const d = await api('set'), s = d.set;
+  const sw = (k, l) => `<label class="sw"><input type="checkbox" data-k="${k}" ${s[k] === '1' ? 'checked' : ''}> ${l}</label>`;
+  const inp = (k, l, t, ex) => `<label class="fld"><span>${l}</span><input class="in" data-k="${k}" type="${t || 'text'}" value="${esc(s[k])}" ${ex || ''}></label>`;
+  $('#body').innerHTML = `<div class="setg">
+    <div class="card"><h3>Umum</h3>${inp('brand', 'Nama layanan')}${inp('kontakWa', 'WhatsApp layanan pelanggan (tampil ke toko)', 'text', 'placeholder="0858xxxxxxx"')}${inp('adminWa', 'WhatsApp pengelola (menerima notifikasi toko baru & bukti bayar)', 'text', 'placeholder="0858xxxxxxx, 0812xxxxxxx"')}</div>
+    <div class="card"><h3>Masa coba & tenggang</h3><div class="f2">${inp('trialHari', 'Lama masa coba (hari)', 'number', 'min="0"')}<label class="fld"><span>Paket selama masa coba</span><select class="in" data-k="trialPaket">${d.paket.map(p => `<option value="${esc(p.id)}" ${s.trialPaket === p.id ? 'selected' : ''}>${esc(p.nama)}</option>`).join('')}</select></label>${inp('tenggangHari', 'Tenggang toko berbayar (hari)', 'number', 'min="0"')}${inp('tenggangTrial', 'Tenggang setelah masa coba (hari)', 'number', 'min="0"')}</div>
+      ${inp('ingatHari', 'Pengingat WhatsApp sebelum berakhir (hari, pisahkan koma)')}<p class="help">Lewat masa tenggang, toko menjadi baca-saja: data aman & laporan bisa dilihat, transaksi dikunci.</p></div>
+    <div class="card"><h3>Pembayaran</h3><label class="fld"><span>Rekening tujuan transfer</span><textarea class="in" data-k="rekening" rows="4">${esc(s.rekening)}</textarea></label>
+      <div class="fld"><span style="display:block;font-size:13px;font-weight:700;margin-bottom:6px">Gambar QRIS (opsional)</span><div style="display:flex;gap:12px;align-items:center">${s.qris ? `<img src="${esc(s.qris)}" alt="QRIS" style="width:90px;border-radius:10px;border:1px solid var(--line)">` : ''}<input type="file" id="qr" accept="image/*">${s.qris ? '<button class="btn sm err" id="qrDel">Hapus</button>' : ''}</div></div></div>
+    <div class="card"><h3>WhatsApp gateway</h3><p class="help" style="margin-top:-6px">Untuk kode verifikasi pendaftaran, pengingat tagihan, dan notifikasi. Daftar di fonnte.com atau wablas.com.</p>
+      <div class="f2"><label class="fld"><span>Penyedia</span><select class="in" data-k="waProvider"><option value="fonnte">Fonnte</option><option value="wablas" ${s.waProvider === 'wablas' ? 'selected' : ''}>Wablas</option></select></label><label class="fld"><span>Token ${s.adaToken ? '(tersimpan)' : ''}</span><input class="in" id="tok" placeholder="${s.adaToken ? esc(s.token) : 'tempel token di sini'}"></label></div>
+      <div id="wbl" ${s.waProvider === 'wablas' ? '' : 'hidden'}><div class="f2">${inp('waDomain', 'Domain server Wablas', 'text', 'placeholder="https://jkt.wablas.com"')}<label class="fld"><span>Secret key (opsional)</span><input class="in" id="sec"></label></div></div>
+      <div class="acts"><input class="in" id="tesNo" placeholder="Nomor tes (kosong = WA pengelola)" style="flex:1;width:auto"><button class="btn" id="tes">Kirim pesan tes</button></div></div>
+    <div class="card"><h3>Pendaftaran toko</h3>${sw('daftarAktif', 'Buka pendaftaran toko baru')}${sw('otpAktif', 'Wajib verifikasi kode WhatsApp saat daftar')}${inp('maksTokoPerWa', 'Maksimal toko per nomor WhatsApp', 'number', 'min="1"')}</div>
+    <div class="card"><h3>Program ajak teman (referral)</h3><div class="f2">${inp('refDiskon', 'Diskon tagihan pertama untuk toko baru (%)', 'number', 'min="0" max="100"')}${inp('refBonusHari', 'Bonus hari untuk toko pengajak', 'number', 'min="0"')}</div><p class="help">Bonus diberikan sekali, saat toko yang diajak membayar tagihan pertamanya.</p></div>
+    <div class="card"><h3>Tugas terjadwal (cron)</h3><p class="sm" style="margin-top:0">Pasang agar berjalan tiap 15 menit (pengingat tagihan + laporan WA harian tiap toko):</p><p><code>${esc(d.cron.cli)}</code></p><p class="sm">atau URL: <code>${esc(d.cron.url)}</code></p><p class="mut sm">Pengingat terakhir dijalankan: ${tgl(d.cron.terakhir)}</p><button class="btn" id="harian">Jalankan pengingat sekarang</button></div>
+    <div class="card"><h3>Pengelola</h3>${d.admins.map(a => `<div style="display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px dashed var(--line)"><span style="flex:1"><b>${esc(a.nama)}</b> <span class="mut sm">@${esc(a.username)}</span></span><span class="bdg ${a.aktif ? 't' : ''}">${a.aktif ? 'Aktif' : 'Nonaktif'}</span><button class="btn sm" data-ad="${esc(a.id)}">Ubah</button></div>`).join('')}<button class="btn sm" id="adAdd" style="margin-top:12px">+ Tambah pengelola</button></div>
+  </div><div style="position:sticky;bottom:0;padding:14px 0;background:linear-gradient(transparent,var(--bg) 30%);display:flex;justify-content:flex-end"><button class="btn pri" id="save" style="min-width:200px">Simpan pengaturan</button></div>`;
+  $('[data-k="waProvider"]').onchange = e => { $('#wbl').hidden = e.target.value !== 'wablas'; };
+  let QR = null, QRDEL = false;
+  $('#qr').onchange = async e => { if (e.target.files[0]) QR = await fileData(e.target.files[0]); };
+  if ($('#qrDel')) $('#qrDel').onclick = () => { QRDEL = true; toast('QRIS akan dihapus saat disimpan'); };
+  $('#save').onclick = e => act(e.currentTarget, async () => {
+    const o = {}; $$('[data-k]').forEach(i => { o[i.dataset.k] = i.type === 'checkbox' ? (i.checked ? '1' : '0') : i.value; });
+    if ($('#tok').value) o.token = $('#tok').value; if ($('#sec') && $('#sec').value) o.secret = $('#sec').value;
+    if (QR) o.qrisFile = QR; if (QRDEL) o.hapusQris = 1;
+    await api('setSimpan', o); toast('Pengaturan disimpan'); vSet();
+  });
+  $('#tes').onclick = e => act(e.currentTarget, async () => { const r = await api('waTes', { ke: $('#tesNo').value }); toast('Terkirim: ' + r.info); });
+  $('#harian').onclick = e => act(e.currentTarget, async () => { const r = await api('harian'); modal('Pengingat dijalankan', r.hasil.length ? r.hasil.map(x => `<div style="padding:6px 0;border-bottom:1px dashed var(--line)">${x.ok ? '✅' : '❌'} <b>${esc(x.toko)}</b> · ${esc(x.jenis)} ${x.ok ? '' : '· ' + esc(x.info)}</div>`).join('') : '<p class="mut">Tidak ada toko yang perlu diingatkan hari ini.</p>', `<button class="btn pri" data-x>Tutup</button>`); });
+  const adForm = a => {
+    const ov = modal(a ? 'Ubah pengelola' : 'Tambah pengelola', `${a ? '' : '<label class="fld"><span>Username</span><input class="in" id="u" autocapitalize="none"></label>'}<label class="fld"><span>Nama</span><input class="in" id="n" value="${esc(a ? a.nama : '')}"></label><label class="fld"><span>${a ? 'Password baru (kosong = tidak diubah)' : 'Password (min. 8)'}</span><input class="in" id="p" type="password"></label>${a ? `<label class="sw"><input type="checkbox" id="ak" ${a.aktif ? 'checked' : ''}> Aktif</label>` : ''}`, `<button class="btn" data-x>Batal</button><button class="btn pri" id="ok">Simpan</button>`);
+    $('#ok', ov).onclick = e => act(e.currentTarget, async () => { await api('adminSimpan', a ? { id: a.id, nama: $('#n', ov).value, password: $('#p', ov).value, aktif: $('#ak', ov).checked } : { username: $('#u', ov).value, nama: $('#n', ov).value, password: $('#p', ov).value }); ov.remove(); toast('Pengelola disimpan'); vSet(); });
+  };
+  $('#adAdd').onclick = () => adForm(null);
+  $$('[data-ad]').forEach(b => b.onclick = () => adForm(d.admins.find(a => a.id === b.dataset.ad)));
+}
+
+/* ---------------- log ---------------- */
+async function vLog() {
+  const d = await api('log');
+  $('#body').innerHTML = `<div class="card tw"><table><thead><tr><th>Waktu</th><th>Oleh</th><th>Toko</th><th>Aksi</th><th>Detail</th></tr></thead><tbody>${d.log.map(l => `<tr><td style="white-space:nowrap">${esc(l.waktu.slice(0, 16))}</td><td>${esc(l.oleh)}</td><td>${esc(l.toko || '')}</td><td><b>${esc(l.aksi)}</b></td><td>${esc(l.detail)}</td></tr>`).join('')}</tbody></table></div>`;
+}
+
+async function boot() {
+  if (!TOK) return showLogin();
+  try { ME = await api('me'); start(); } catch (e) { if (e.code !== 'AUTH') showLogin(e.message); }
+}
+boot();
+</script>
+</body>
+</html>

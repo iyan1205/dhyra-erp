@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#14212B">
+<title>Dhyra — Langganan</title>
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/dhyra.css?v=5.6.2">
+<style>
+.wrap{max-width:1180px;margin:0 auto;padding:26px 22px 70px}
+.head{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.head h1{margin:0;font-size:26px;letter-spacing:-.02em}.head .ic{width:54px;height:54px;border-radius:16px;background:#fff;box-shadow:var(--sh);display:grid;place-items:center}
+.sp{flex:1}
+.grid2{display:grid;grid-template-columns:1.25fr 1fr;gap:16px;margin-bottom:16px}
+@media(max-width:900px){.grid2{grid-template-columns:1fr}}
+.stat{padding:22px}
+.stat .row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.stat h2{margin:0;font-size:24px;letter-spacing:-.02em}
+.stat .big{font-size:15px;margin-top:6px}
+.meter{margin-top:16px;display:grid;gap:12px}
+.meter .m{display:grid;grid-template-columns:110px 1fr auto;gap:10px;align-items:center;font-size:14px}
+.bar{height:9px;border-radius:9px;background:var(--card2);overflow:hidden}.bar i{display:block;height:100%;border-radius:9px;background:var(--toska)}
+.bar i.a{background:var(--amber)}.bar i.k{background:var(--koral)}
+.sec{margin:30px 0 12px;display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap}.sec h2{margin:0;font-size:20px}
+.seg{display:inline-grid;grid-auto-flow:column;gap:4px;background:var(--card2);padding:4px;border-radius:12px}
+.seg button{border:0;background:none;padding:8px 14px;border-radius:9px;font-weight:700;color:var(--mut);cursor:pointer;white-space:nowrap}
+.seg button.on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.seg small{font-weight:700;color:var(--toskaD);margin-left:4px}
+@media(max-width:600px){.seg{grid-auto-flow:row;grid-template-columns:repeat(4,1fr);width:100%}.seg button{padding:8px 2px;font-size:13px}.seg small{display:none}.meter .m{grid-template-columns:90px 1fr auto}.wrap{padding:18px 14px 60px}}
+.pk{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.pc{padding:22px;display:flex;flex-direction:column;gap:12px;position:relative}
+.pc.now{border:2px solid var(--toska)}.pc.fav{border:2px solid var(--biru)}
+.pc .tag{position:absolute;top:-12px;left:20px}
+.pc h3{margin:0;font-size:20px}.pc .ds{color:var(--mut);font-size:13.5px;min-height:38px}
+.pc .pr{font-size:28px;font-weight:800;letter-spacing:-.02em}.pc .pr small{font-size:14px;font-weight:600;color:var(--mut)}
+.pc .tot{font-size:13px;color:var(--mut);min-height:20px}
+.pc ul{list-style:none;padding:0;margin:0;display:grid;gap:6px;font-size:14px}
+.pc li{display:flex;gap:8px;align-items:center}.pc li.no{color:#A3ADB2;text-decoration:line-through}
+.pc .lim{font-size:13px;color:var(--mut);border-top:1px dashed var(--line);padding-top:10px}
+.pc .btn{margin-top:auto}
+.inv{padding:20px;border:2px solid var(--amber)}
+.inv .amt{font-size:30px;font-weight:800;letter-spacing:-.02em}
+.payg{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:start;margin-top:14px}
+@media(max-width:700px){.payg{grid-template-columns:1fr}}
+.rek{white-space:pre-line;background:var(--card2);border-radius:12px;padding:12px 14px;font-weight:600}
+.qris{width:190px;border-radius:12px;border:1px solid var(--line);background:#fff;padding:8px}
+.drop{border:2px dashed #C9D1CC;border-radius:14px;padding:16px;text-align:center;cursor:pointer;background:#FAFBF9}
+.drop:hover{border-color:var(--toska)}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--mut);padding:11px 14px;border-bottom:1px solid var(--line);background:#FAFBF9}
+td{padding:11px 14px;border-bottom:1px solid var(--line);font-size:14px}tr:last-child td{border-bottom:0}
+.tw{overflow-x:auto}
+.ref{padding:20px;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center}
+@media(max-width:700px){.ref{grid-template-columns:1fr}}
+.code{font-family:ui-monospace,Menlo,monospace;font-size:22px;font-weight:800;letter-spacing:.08em;background:var(--toskaS);color:#0A5C52;padding:6px 14px;border-radius:10px;display:inline-block}
+.sum{display:grid;gap:8px;font-size:14.5px}.sum div{display:flex;justify-content:space-between;gap:10px}.sum .t{font-size:18px;font-weight:800;border-top:1px solid var(--line);padding-top:10px}
+.note{font-size:13px;background:var(--toskaS);color:#0A5C52;border-radius:10px;padding:9px 12px}
+</style>
+</head>
+<body>
+<header class="top"><div class="in-w"><a id="topLogo" href="beranda.html?home=1" style="text-decoration:none"></a><span class="sp"></span><span id="homeBtn"></span></div></header>
+<main class="wrap">
+  <div class="head"><span class="ic" id="hIc"></span><div><h1>Langganan</h1><div class="mut" id="hSub">Paket, tagihan, dan program ajak teman.</div></div></div>
+  <div id="body"><div class="card" style="padding:40px;text-align:center"><span class="spin d"></span></div></div>
+</main>
+<div id="modals"></div>
+<div class="toasts" id="toasts"></div>
+<script src="assets/dhyra.js?v=5.6.2"></script>
+<script>
+'use strict';
+const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const D = window.Dhyra;
+const rp = n => 'Rp' + Math.round(+n || 0).toLocaleString('id-ID');
+const tgl = s => s ? s.slice(8, 10) + '/' + s.slice(5, 7) + '/' + s.slice(0, 4) : '–';
+const ST = { trial: ['t', 'Masa coba'], aktif: ['t', 'Aktif'], tenggang: ['a', 'Masa tenggang'], baca: ['k', 'Baca-saja'], beku: ['k', 'Dibekukan'] };
+const TS = { menunggu: ['a', 'Menunggu bayar'], dibayar: ['t', 'Lunas'], batal: ['', 'Batal'] };
+let DATA = null, BLN = 12;
+function toast(m, t) { const e = document.createElement('div'); e.className = 'toast ' + (t || ''); e.textContent = m; $('#toasts').appendChild(e); setTimeout(() => e.remove(), t === 'err' ? 5000 : 2600); }
+function modal(title, body, foot, lg) {
+  const ov = document.createElement('div'); ov.className = 'ov';
+  ov.innerHTML = `<div class="md ${lg ? 'lg' : ''}" role="dialog" aria-modal="true"><div class="mh"><h3>${title}</h3><button class="ib" data-x aria-label="Tutup"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div><div class="mb">${body}</div><div class="mf">${foot}</div></div>`;
+  ov.addEventListener('mousedown', e => { if (e.target === ov) ov.remove(); });
+  $$('[data-x]', ov).forEach(b => b.onclick = () => ov.remove());
+  $('#modals').appendChild(ov); return ov;
+}
+async function api(a, d) {
+  const r = await fetch('api.php', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ m: 'saas', a, t: D.token(), d: d || {} }) }).then(x => x.json());
+  if (r.error) { const e = new Error(r.error); e.code = r.code; if (r.code === 'AUTH') D.toLogin('Sesi berakhir. Silakan masuk kembali.'); throw e; }
+  return r;
+}
+const check = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0B7A6D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>';
+const cross = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B9C2C6" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>';
+const harga = (p, b) => b === 12 && p.hargaTahun > 0 ? p.hargaTahun : p.hargaBulan * b;
+const lim = n => n > 0 ? n.toLocaleString('id-ID') : 'Tanpa batas';
+
+function render() {
+  const X = DATA, S = X.status, pa = X.paketAktif;
+  $('#hSub').textContent = X.toko.nama + ' · ' + X.toko.url.replace(/^https?:\/\//, '');
+  const sisa = S.sisa >= 0 ? (S.sisa === 0 ? 'berakhir hari ini' : `sisa ${S.sisa + (S.trial ? 1 : 0)} hari`) : `berakhir ${-S.sisa} hari lalu`;
+  const met = (nm, pakai, max) => { const pc = max > 0 ? Math.min(100, Math.round(100 * pakai / max)) : 8; return `<div class="m"><span>${nm}</span><span class="bar"><i class="${max > 0 && pakai > max ? 'k' : max > 0 && pc >= 80 ? 'a' : ''}" style="width:${max > 0 ? pc : 100}%;${max > 0 ? '' : 'opacity:.25'}"></i></span><b>${pakai.toLocaleString('id-ID')} / ${lim(max)}</b></div>`; };
+  const pend = X.tagihan.find(t => t.status === 'menunggu');
+  let h = `<div class="grid2"><div class="card stat">
+      <div class="row"><span class="bdg ${ST[S.kode][0]}">${ST[S.kode][1]}</span><span class="mut sm">Pelanggan sejak ${tgl(X.toko.dibuat)}</span></div>
+      <h2 style="margin-top:10px">Paket ${esc(pa ? pa.nama : '-')}${S.trial ? ' <span class="mut" style="font-size:16px;font-weight:600">(gratis selama masa coba)</span>' : ''}</h2>
+      <div class="big">${S.kode === 'baca' ? '<b style="color:#9B2C25">Toko baca-saja</b> · data aman, transaksi dikunci sampai langganan diperpanjang.' : S.kode === 'tenggang' ? `<b style="color:#8A5A00">Sudah berakhir ${tgl(S.berakhir)}</b> · masih bisa dipakai sampai ${tgl(S.tenggangSampai)}.` : `Aktif sampai <b>${tgl(S.berakhir)}</b> · ${sisa}`}</div>
+      <div class="meter">${met('Outlet', X.pakai.outlet, pa ? pa.maxOutlet : 0)}${met('Pengguna aktif', X.pakai.user, pa ? pa.maxUser : 0)}${met('Produk', X.pakai.produk, pa ? pa.maxProduk : 0)}</div>
+    </div>
+    <div class="card stat"><b style="font-size:16px">Menu di paket Anda</b><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px">${Object.entries(X.modul).map(([k, n]) => `<span class="bdg ${pa && pa.modul.includes(k) ? 't' : ''}" style="${pa && pa.modul.includes(k) ? '' : 'text-decoration:line-through;opacity:.7'}">${esc(n)}</span>`).join('')}</div>
+      <p class="mut sm" style="margin:14px 0 0">Ganti paket kapan saja. Saat naik paket, sisa masa paket lama dihitung menjadi hari tambahan di paket baru.</p></div></div>`;
+  if (pend) h += invoiceCard(pend);
+  h += `<div class="sec"><h2>${S.trial ? 'Pilih paket' : 'Perpanjang atau ganti paket'}</h2><span class="sp"></span><div class="seg" role="group" aria-label="Lama langganan">${X.bulan.map(b => `<button data-b="${b}" class="${b === BLN ? 'on' : ''}">${b} bulan${b === 12 && X.paket.some(p => p.hargaTahun > 0 && p.hargaTahun < p.hargaBulan * 12) ? '<small>hemat</small>' : ''}</button>`).join('')}</div></div>
+    <div class="pk">${X.paket.map(p => {
+      const tot = harga(p, BLN), now = pa && p.id === pa.id && !S.trial, per = Math.round(tot / BLN);
+      return `<div class="card pc ${now ? 'now' : p.unggulan ? 'fav' : ''}">${now ? '<span class="tag bdg t">Paket Anda</span>' : p.unggulan ? '<span class="tag bdg b">Paling populer</span>' : ''}
+        <h3>${esc(p.nama)}</h3><div class="ds">${esc(p.deskripsi)}</div>
+        <div class="pr">${rp(BLN === 1 ? tot : tot)}<small> /${BLN === 1 ? 'bulan' : BLN === 12 ? 'tahun' : BLN + ' bulan'}</small></div><div class="tot">${BLN > 1 ? `Setara ${rp(per)}/bulan${p.hargaBulan * BLN > tot ? ` · hemat ${rp(p.hargaBulan * BLN - tot)}` : ''}` : ''}</div>
+        <ul>${Object.entries(X.modul).map(([k, n]) => `<li class="${p.modul.includes(k) ? '' : 'no'}">${p.modul.includes(k) ? check : cross}${esc(n)}</li>`).join('')}</ul>
+        <div class="lim">Outlet: <b>${lim(p.maxOutlet)}</b> · Pengguna: <b>${lim(p.maxUser)}</b> · Produk: <b>${lim(p.maxProduk)}</b></div>
+        <button class="btn ${now || p.unggulan ? 'pri' : ''}" data-pilih="${esc(p.id)}" ${pend && pend.adaBukti ? 'disabled title="Tunggu konfirmasi pembayaran sebelumnya"' : ''}>${now ? 'Perpanjang ' + BLN + ' bulan' : 'Pilih ' + esc(p.nama)}</button></div>`;
+    }).join('')}</div>`;
+  h += `<div class="sec"><h2>Ajak teman, dapat bonus</h2></div><div class="card ref"><div>
+      <div class="mut sm">Kode referral toko Anda</div><div style="margin:6px 0 10px"><span class="code">${esc(X.ref.kode)}</span></div>
+      <div style="font-size:14.5px">Toko yang mendaftar dengan kode ini mendapat <b>diskon ${X.ref.diskon}%</b> di tagihan pertama. Anda mendapat <b>+${X.ref.bonusHari} hari</b> masa aktif setiap kali toko itu membayar pertama kali.</div>
+      <div class="mut sm" style="margin-top:8px">Sudah mengajak <b>${X.ref.jumlah}</b> toko · <b>${X.ref.bayar}</b> sudah berlangganan</div></div>
+      <div style="display:flex;flex-direction:column;gap:8px;min-width:200px"><button class="btn" id="cpRef">Salin tautan daftar</button><a class="btn pri" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(`Saya pakai ${X.brand} untuk kasir, stok & laporan toko. Coba gratis, dan pakai kode ${X.ref.kode} untuk diskon ${X.ref.diskon}% di tagihan pertama: ${X.ref.link}`)}">Bagikan lewat WhatsApp</a></div></div>`;
+  h += `<div class="sec"><h2>Riwayat tagihan</h2></div><div class="card tw">${X.tagihan.length ? `<table><thead><tr><th>No.</th><th>Tanggal</th><th>Paket</th><th class="r">Total</th><th>Status</th><th>Periode</th><th></th></tr></thead><tbody>${X.tagihan.map(t => `<tr><td><b>${esc(t.no)}</b></td><td>${tgl(t.dibuat)}</td><td>${esc(t.paket)} · ${t.bulan} bln</td><td class="r">${rp(t.total)}</td><td><span class="bdg ${TS[t.status][0]}">${t.status === 'menunggu' && t.adaBukti ? 'Diperiksa' : TS[t.status][1]}</span></td><td>${t.mulai ? tgl(t.mulai) + ' – ' + tgl(t.sampai) : '–'}</td><td class="r"><button class="btn sm" data-inv="${esc(t.id)}">Invoice</button></td></tr>`).join('')}</tbody></table>` : '<div style="padding:22px" class="mut">Belum ada tagihan.</div>'}</div>`;
+  $('#body').innerHTML = h;
+  $$('[data-b]').forEach(b => b.onclick = () => { BLN = +b.dataset.b; render(); });
+  $$('[data-pilih]').forEach(b => b.onclick = () => checkout(b.dataset.pilih));
+  $$('[data-inv]').forEach(b => b.onclick = () => invoice(b.dataset.inv));
+  $('#cpRef').onclick = () => { navigator.clipboard && navigator.clipboard.writeText(X.ref.link).then(() => toast('Tautan disalin'), () => prompt('Salin tautan ini:', X.ref.link)); };
+  if (pend) bindInvoice(pend);
+}
+function invoiceCard(t) {
+  const B = DATA.bayar;
+  return `<div class="card inv" id="pend"><div style="display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap"><div style="flex:1;min-width:220px">
+      <span class="bdg a">${t.adaBukti ? 'Bukti sedang diperiksa' : 'Menunggu pembayaran'}</span>
+      <div style="margin-top:8px" class="mut sm">${esc(t.no)} · Paket ${esc(t.paket)} · ${t.bulan} bulan</div>
+      <div class="amt">${rp(t.total)}</div>${t.diskon ? `<div class="mut sm">Harga ${rp(t.harga)} · potongan ${rp(t.diskon)} (${esc(t.diskonKet)})</div>` : ''}</div>
+      <div style="display:flex;gap:8px"><button class="btn sm" data-inv="${esc(t.id)}">Lihat invoice</button>${t.adaBukti ? '' : `<button class="btn sm err" id="batalInv">Batalkan</button>`}</div></div>
+    ${t.catatan ? `<div class="err-box" style="margin:12px 0 0">${esc(t.catatan)}</div>` : ''}
+    ${t.adaBukti ? `<div class="note" style="margin-top:12px">Bukti dikirim ${esc(t.buktiPada)}. Pengelola akan mengonfirmasi dan Anda mendapat pesan WhatsApp begitu langganan aktif. Salah unggah? <a href="#" id="ulang">Unggah ulang</a></div>` : ''}
+    <div class="payg" ${t.adaBukti ? 'hidden id="payg"' : 'id="payg"'}><div><b>1. Transfer tepat ${rp(t.total)} ke:</b><div class="rek" style="margin:8px 0 14px">${esc(B.rekening || '-')}</div>
+      <b>2. Unggah bukti transfer</b><label class="drop" style="display:block;margin-top:8px"><input type="file" id="fBukti" accept="image/*,application/pdf" hidden><span id="fLbl">📎 Pilih foto / screenshot bukti transfer (JPG, PNG, PDF)</span></label>
+      <label class="fld" style="margin-top:10px"><span>Catatan (opsional)</span><input class="in" id="fKet" placeholder="mis. transfer dari BCA a/n Budi"></label>
+      <button class="btn pri" id="kirimBukti" disabled>Kirim bukti pembayaran</button>${B.kontakWa ? ` <a class="btn" target="_blank" rel="noopener" href="https://wa.me/${esc(B.kontakWa.split(',')[0].trim())}?text=${encodeURIComponent('Halo, saya mau konfirmasi pembayaran ' + t.no + ' untuk toko ' + DATA.toko.nama)}">Tanya via WhatsApp</a>` : ''}</div>
+      ${B.qris ? `<div style="text-align:center"><b>atau scan QRIS</b><br><img class="qris" src="${esc(B.qris)}" alt="Kode QRIS pembayaran" style="margin-top:8px"></div>` : ''}</div></div>`;
+}
+let FILE = null;
+function bindInvoice(t) {
+  const b = $('#batalInv'); if (b) b.onclick = async () => { if (!confirm('Batalkan tagihan ' + t.no + '?')) return; try { DATA = await api('lgBatal', { id: t.id }); render(); toast('Tagihan dibatalkan'); } catch (e) { toast(e.message, 'err'); } };
+  const u = $('#ulang'); if (u) u.onclick = e => { e.preventDefault(); $('#payg').hidden = false; u.closest('.note').hidden = true; };
+  const f = $('#fBukti'); if (!f) return;
+  f.onchange = async () => {
+    const x = f.files[0]; if (!x) return;
+    try { FILE = await kecil(x); $('#fLbl').textContent = '✅ ' + x.name; $('#kirimBukti').disabled = false; } catch (e) { toast(e.message, 'err'); }
+  };
+  $('#kirimBukti').onclick = async ev => {
+    const bt = ev.currentTarget; bt.disabled = true; bt.innerHTML = '<span class="spin"></span> Mengirim…';
+    try { DATA = await api('lgBukti', { id: t.id, file: FILE, ket: $('#fKet').value }); FILE = null; render(); toast('Bukti terkirim. Terima kasih!'); }
+    catch (e) { toast(e.message, 'err'); bt.disabled = false; bt.textContent = 'Kirim bukti pembayaran'; }
+  };
+}
+/* perkecil foto agar cepat diunggah */
+function kecil(file) {
+  return new Promise((ok, no) => {
+    if (file.size > 12 * 1024 * 1024) return no(new Error('File terlalu besar (maks. 12 MB).'));
+    const rd = new FileReader();
+    rd.onload = () => {
+      if (file.type === 'application/pdf') return file.size > 2.9 * 1024 * 1024 ? no(new Error('PDF maksimal 2,9 MB.')) : ok(rd.result);
+      const im = new Image();
+      im.onload = () => { const m = 1600, s = Math.min(1, m / Math.max(im.width, im.height)); const c = document.createElement('canvas'); c.width = Math.round(im.width * s); c.height = Math.round(im.height * s); c.getContext('2d').drawImage(im, 0, 0, c.width, c.height); ok(c.toDataURL('image/jpeg', .85)); };
+      im.onerror = () => no(new Error('Gambar tidak bisa dibaca.')); im.src = rd.result;
+    };
+    rd.onerror = () => no(new Error('File tidak bisa dibaca.')); rd.readAsDataURL(file);
+  });
+}
+async function checkout(pid) {
+  const p = DATA.paket.find(x => x.id === pid);
+  const ov = modal('Ringkasan langganan', `<div class="err-box" id="ce" hidden></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px"><span class="bdg b">Paket ${esc(p.nama)}</span><span class="bdg">${BLN} bulan</span></div>
+    <div class="sum" id="sum"><span class="spin d"></span></div>
+    <div style="display:flex;gap:8px;margin-top:16px"><input class="in" id="vc" placeholder="Kode voucher (opsional)" style="text-transform:uppercase"><button class="btn" id="vcGo">Pakai</button></div>`,
+    `<button class="btn" data-x>Batal</button><button class="btn pri" id="go" disabled>Buat tagihan</button>`);
+  let V = '';
+  const hit = async keep => {
+    try {
+      const h = await api('lgHitung', { paket: pid, bulan: BLN, voucher: V }); if (!keep) $('#ce', ov).hidden = true;
+      $('#sum', ov).innerHTML = `<div><span>Harga ${BLN} bulan</span><b>${rp(h.normal)}</b></div>${h.hemat > 0 ? `<div><span>Hemat bayar tahunan</span><b>−${rp(h.hemat)}</b></div>` : ''}${h.diskon ? `<div><span>${esc(h.diskonKet)}</span><b>−${rp(h.diskon)}</b></div>` : ''}<div class="t"><span>Total dibayar</span><span>${rp(h.total)}</span></div>
+        <div class="note">Aktif <b>${tgl(h.periode.mulai)} – ${tgl(h.periode.sampai)}</b>${h.periode.ket ? ' · ' + esc(h.periode.ket) : ''}, setelah pembayaran dikonfirmasi.</div>`;
+      $('#go', ov).disabled = false;
+    } catch (e) { const x = $('#ce', ov); x.hidden = false; x.textContent = e.message; if (e.code === 'VOUCHER') { V = ''; hit(true); } }
+  };
+  $('#vcGo', ov).onclick = () => { V = $('#vc', ov).value.trim(); hit(); };
+  $('#vc', ov).onkeydown = e => { if (e.key === 'Enter') { e.preventDefault(); $('#vcGo', ov).click(); } };
+  $('#go', ov).onclick = async e => {
+    e.currentTarget.disabled = true;
+    try { DATA = await api('lgBuat', { paket: pid, bulan: BLN, voucher: V }); ov.remove(); render(); toast(DATA.baru && DATA.baru.status === 'dibayar' ? 'Langganan aktif!' : 'Tagihan dibuat. Silakan bayar & unggah bukti.'); const pd = $('#pend'); if (pd) pd.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    catch (er) { const x = $('#ce', ov); x.hidden = false; x.textContent = er.message; e.currentTarget.disabled = false; }
+  };
+  hit();
+}
+async function invoice(id) {
+  try {
+    const r = await api('lgInvoice', { id }); const t = r.tagihan, P = r.penjual, K = r.toko;
+    const w = window.open('', '_blank'); if (!w) return toast('Izinkan pop-up untuk melihat invoice', 'err');
+    w.document.write(`<!doctype html><html lang="id"><head><meta charset="utf-8"><title>${esc(t.no)}</title><style>body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;color:#14212B;max-width:760px;margin:30px auto;padding:0 24px}h1{margin:0;font-size:28px}table{width:100%;border-collapse:collapse;margin:22px 0}td,th{padding:10px;border-bottom:1px solid #E2E6E1;text-align:left}th{font-size:12px;text-transform:uppercase;color:#5B6870}.r{text-align:right}.tot td{font-weight:800;font-size:18px;border-bottom:0}.st{display:inline-block;padding:4px 12px;border-radius:999px;font-weight:700;font-size:13px;background:${t.status === 'dibayar' ? '#E1F4F1;color:#0A6A5F' : '#FDF2DA;color:#8A5A00'}}.g{display:flex;justify-content:space-between;gap:20px;margin-top:22px}.m{color:#5B6870;font-size:14px}pre{font:inherit;white-space:pre-line;background:#F5F6F3;padding:12px;border-radius:10px}@media print{button{display:none}}</style></head><body>
+      <div class="g" style="margin-top:0"><div><h1>${esc(P.brand)}</h1><div class="m">${esc(P.url.replace(/^https?:\/\//, ''))}${P.kontakWa ? ' · WA ' + esc(P.kontakWa) : ''}</div></div><div style="text-align:right"><h1>INVOICE</h1><div class="m">${esc(t.no)}</div><div style="margin-top:6px"><span class="st">${t.status === 'dibayar' ? 'LUNAS' : t.status === 'batal' ? 'BATAL' : 'BELUM DIBAYAR'}</span></div></div></div>
+      <div class="g"><div><div class="m">Ditagihkan kepada</div><b>${esc(K.nama)}</b><div class="m">${esc(K.pemilik)}<br>WA ${esc(K.wa)}${K.email ? '<br>' + esc(K.email) : ''}<br>${esc(K.url.replace(/^https?:\/\//, ''))}</div></div><div style="text-align:right"><div class="m">Tanggal</div><b>${tgl(t.dibuat)}</b>${t.dibayar ? `<div class="m" style="margin-top:6px">Dibayar</div><b>${tgl(t.dibayar)}</b>` : ''}</div></div>
+      <table><thead><tr><th>Deskripsi</th><th class="r">Jumlah</th></tr></thead><tbody><tr><td>Langganan ${esc(P.brand)} paket ${esc(t.paket)} · ${t.bulan} bulan${t.mulai ? `<div class="m">${tgl(t.mulai)} – ${tgl(t.sampai)}</div>` : ''}</td><td class="r">${rp(t.harga)}</td></tr>${t.diskon ? `<tr><td>${esc(t.diskonKet)}</td><td class="r">−${rp(t.diskon)}</td></tr>` : ''}<tr class="tot"><td>Total</td><td class="r">${rp(t.total)}</td></tr></tbody></table>
+      ${t.status === 'menunggu' ? `<div class="m">Pembayaran ke:</div><pre>${esc(P.rekening)}</pre>` : ''}<p class="m">Terima kasih telah berlangganan ${esc(P.brand)}.</p><button onclick="print()" style="padding:10px 18px;border-radius:10px;border:0;background:#0B7A6D;color:#fff;font-weight:700;cursor:pointer">Cetak / simpan PDF</button></body></html>`);
+    w.document.close();
+  } catch (e) { toast(e.message, 'err'); }
+}
+async function boot() {
+  $('#topLogo').innerHTML = D.logo(30); $('#homeBtn').innerHTML = D.homeBtn('btn sm'); $('#hIc').innerHTML = D.icon('langganan', 38);
+  if (!D.token()) return D.toLogin();
+  try { DATA = await api('lgInfo'); render(); }
+  catch (e) { $('#body').innerHTML = `<div class="card" style="padding:28px"><b>${esc(e.message)}</b>${e.code === 'MODUL' ? '<p class="mut">Minta administrator toko membuka menu ini.</p>' : ''}</div>`; }
+}
+boot();
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#14212B">
+<title>Masuk… · Dhyra</title>
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/dhyra.css?v=5.6.2">
+<style>body{min-height:100vh;display:grid;place-items:center;padding:20px}.box{max-width:420px;width:100%;padding:30px 26px;text-align:center}.box h1{font-size:20px;margin:16px 0 6px}</style>
+</head>
+<body>
+<div class="card box"><div id="logo" style="display:flex;justify-content:center"></div><h1 id="t">Menyiapkan toko Anda…</h1><p class="mut" id="m"><span class="spin d"></span></p><div id="act"></div></div>
+<script src="assets/dhyra.js?v=5.6.2"></script>
+<script>
+'use strict';
+(function () {
+  var D = window.Dhyra, $ = function (s) { return document.querySelector(s); };
+  $('#logo').innerHTML = D.logo(34);
+  var k = (location.hash.match(/k=([a-f0-9]{48})/) || [])[1];
+  history.replaceState(null, '', 'masuk.html');
+  function gagal(msg) { $('#t').textContent = 'Tidak dapat masuk otomatis'; $('#m').textContent = msg; $('#act').innerHTML = '<a class="btn pri" href="beranda.html" style="margin-top:8px">Masuk dengan username & password</a>'; }
+  if (!k) return gagal('Tautan masuk tidak lengkap.');
+  fetch('api.php', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ m: 'saas', a: 'masuk', d: { k: k } }) })
+    .then(function (r) { return r.json(); })
+    .then(function (r) {
+      if (r.error) return gagal(r.error);
+      D.store.set('kpt_token', r.token);
+      if (r.dukungan) D.store.set('dh_dukungan', '1'); else D.store.del('dh_dukungan');
+      location.replace('beranda.html?home=1' + (r.dukungan ? '' : '&baru=1'));
+    })
+    .catch(function () { gagal('Gagal terhubung ke server.'); });
+})();
+</script>
+</body>
+</html>

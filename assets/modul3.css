@@ -1,0 +1,48 @@
+/* ============================================================
+ *  Dhyra v5 — gaya komponen Tahap 3
+ * ============================================================ */
+.perp{display:inline-flex;align-items:center;gap:4px;background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:3px}
+.perp b{min-width:150px;text-align:center;font-size:14px}
+tr.off td{opacity:.55}
+/* kartu stok */
+.ksh{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.kss{display:grid;grid-template-columns:repeat(4,minmax(110px,1fr));gap:10px;flex:1;max-width:620px}
+.kss>div{background:var(--card2);border:1px solid var(--bd);border-radius:12px;padding:9px 12px}.kss small{display:block;color:var(--mut);font-size:11.5px;font-weight:600}.kss b{font-family:var(--fh);font-size:18px}
+@media(max-width:640px){.kss{grid-template-columns:1fr 1fr}}
+/* aset */
+.asd{display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:start}
+.asf{width:150px;height:150px;border-radius:14px;overflow:hidden;background:var(--card2);border:1px solid var(--bd)}.asf img{width:100%;height:100%;object-fit:cover;display:block}
+@media(max-width:560px){.asd{grid-template-columns:1fr}.asf{width:100%;height:180px}}
+/* absensi */
+.abc{display:flex;align-items:center;gap:8px}
+.abf{width:42px;height:42px;border-radius:10px;overflow:hidden;padding:0;border:1px solid var(--bd);background:var(--card2);cursor:zoom-in;flex:none}.abf img{width:100%;height:100%;object-fit:cover;display:block}
+.rkt th,.rkt td{padding:6px 4px;font-size:12px}.rkt .stk{position:sticky;left:0;background:var(--card);z-index:1;min-width:150px;padding-left:12px}
+.rkc{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:6px;font-weight:800;font-size:11px;background:var(--card2);color:var(--mut)}
+.rkc:empty{background:transparent}.rkc.ok{background:var(--okS);color:var(--ok)}.rkc.warn{background:var(--warnS);color:var(--warn)}.rkc.pri{background:var(--priS);color:var(--pri)}.rkc.err{background:var(--errS);color:var(--err)}
+.jwt th.tdy{color:var(--pri)}
+.jwc{width:100%;min-width:92px;min-height:54px;border:1px solid var(--bd);border-left:4px solid var(--c,var(--bd));border-radius:10px;background:var(--card);padding:6px;display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;cursor:pointer;font-size:12px}
+.jwc b{font-size:12.5px}.jwc small{color:var(--mut)}.jwc.x{box-shadow:inset 0 0 0 1px var(--acc)}.jwc i{font-style:normal;font-size:10.5px;padding:1px 6px;margin-top:2px}.jwc:disabled{cursor:default}
+.hk{display:flex;gap:4px;flex-wrap:wrap}.hk button{flex:1;min-width:40px;padding:9px 0;border:1px solid var(--bd);border-radius:10px;background:var(--card);font-weight:700;cursor:pointer}.hk button.on{background:var(--priS);border-color:var(--pri);color:var(--pri)}
+/* slip gaji */
+.slh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}.slh b{font-size:16px}
+.slr{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;margin-bottom:6px}.slr>div{background:var(--card2);border-radius:10px;padding:6px 8px;text-align:center}.slr small{display:block;font-size:10.5px;color:var(--mut)}.slr b{font-size:15px}
+@media(max-width:700px){.slr{grid-template-columns:repeat(4,1fr)}}
+.slp .sr.stt{border-top:1px solid var(--bd);margin-top:4px;padding-top:6px;font-size:13px}
+.sltot{display:flex;justify-content:space-between;align-items:center;background:var(--side);color:#fff;border-radius:12px;padding:12px 16px;margin:14px 0 6px}.sltot b{font-family:var(--fh);font-size:22px}
+/* KPI */
+.kpl{display:grid;gap:10px}
+.kpc{display:flex;align-items:center;gap:14px;padding:14px 16px;text-align:left;cursor:pointer;width:100%;color:var(--txt)}.kpc:hover{border-color:var(--pri)}.kpc .g{flex:1;min-width:0}.kpc .g b{display:block}
+.kpn{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--card2);font-weight:800;flex:none}
+.kps{display:flex;flex-direction:column;align-items:flex-end;gap:4px}.kps b{font-family:var(--fh);font-size:24px;line-height:1}
+.kir{display:grid;grid-template-columns:2fr 1.4fr 1fr .8fr auto;gap:8px;align-items:center;margin-bottom:8px}.kih{font-size:12px;font-weight:700;color:var(--mut);margin:8px 0 4px}
+@media(max-width:640px){.kir{grid-template-columns:1fr 1fr}.kih{display:none}}
+/* toko online */
+.osl{display:flex;justify-content:space-between;gap:14px;align-items:center;flex-wrap:wrap}
+.osr{display:grid;grid-template-columns:2fr 1fr auto;gap:8px;margin-bottom:8px}
+/* printer struk (v5.1) */
+.prtw{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}.prth{grid-column:1/-1}.prth ol{margin:0;padding-left:18px;line-height:1.7}
+.pmode{display:grid;gap:8px}.pmode label{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--bd);border-radius:12px;padding:11px 12px;cursor:pointer}
+.pmode label:has(input:checked){border-color:var(--pri);background:var(--priS)}.pmode label.dis{opacity:.5;cursor:not-allowed}.pmode input{margin-top:3px;accent-color:var(--pri)}
+.pmode b{display:block}.pmode small{color:var(--mut);font-size:12.5px}
+.pst{padding:10px 12px;border-radius:12px;background:var(--card2);margin-bottom:12px}
+@media(max-width:900px){.prtw{grid-template-columns:1fr}}

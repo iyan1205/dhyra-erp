@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0B7A6D">
+<title>Dhyra — Kasir, stok & laporan toko dalam satu aplikasi</title>
+<meta name="description" content="Aplikasi kasir online untuk warung, toko, restoran: kasir, stok, member, promo, akuntansi, absensi & gaji. Coba gratis.">
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/dhyra.css?v=5.6.2">
+<style>
+:root{--hd:'Bricolage Grotesque','Plus Jakarta Sans',system-ui,sans-serif}
+body{background:#F7F8F5}
+.w{max-width:1160px;margin:0 auto;padding:0 22px}
+nav.n{position:sticky;top:0;z-index:20;background:rgba(247,248,245,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav.n .w{display:flex;align-items:center;gap:18px;height:66px}
+nav.n a.l{color:var(--ink);text-decoration:none;font-weight:600}
+nav.n .sp{flex:1}
+@media(max-width:720px){nav.n .hm{display:none}}
+.hero{padding:64px 22px 40px;display:grid;grid-template-columns:1.05fr 1fr;gap:44px;align-items:center}
+@media(max-width:960px){.hero{grid-template-columns:1fr;padding-top:36px}}
+.hero h1{font-family:var(--hd);font-size:clamp(38px,5.4vw,64px);line-height:1.02;letter-spacing:-.03em;margin:14px 0 16px}
+.hero h1 em{font-style:normal;color:var(--toskaD)}
+.hero p.lead{font-size:18px;color:#3C4A52;margin:0 0 24px;max-width:540px}
+.pill{display:inline-flex;gap:8px;align-items:center;background:var(--amberS);color:#7A5000;font-weight:700;font-size:13px;padding:6px 12px;border-radius:999px}
+.cta{display:flex;gap:10px;flex-wrap:wrap}.cta .btn{min-height:50px;padding:0 22px;font-size:16px}
+.trust{display:flex;gap:18px;flex-wrap:wrap;margin-top:20px;color:var(--mut);font-size:14px}.trust span{display:flex;gap:6px;align-items:center}
+.shot{position:relative}
+.shot .bw{background:#fff;border-radius:18px;border:1px solid #D5DDDA;box-shadow:0 30px 70px rgba(20,33,43,.18);overflow:hidden}
+.shot .bw .bar{height:30px;background:#E9EDEB;display:flex;gap:7px;align-items:center;padding:0 12px}.shot .bw .bar i{width:10px;height:10px;border-radius:50%;background:#EF5B5B}.shot .bw .bar i:nth-child(2){background:#F5B83D}.shot .bw .bar i:nth-child(3){background:#10A391}
+.shot .bw img{display:block;width:100%;height:auto}
+.shot .ph{position:absolute;right:-14px;bottom:-34px;width:150px;background:#14212B;border-radius:28px;padding:7px;box-shadow:0 24px 50px rgba(20,33,43,.3)}
+.shot .ph img{display:block;width:100%;height:auto;border-radius:22px}
+@media(max-width:600px){.shot .ph{width:110px;right:4px;bottom:-24px}}
+section{padding:56px 0}
+h2.t{font-family:var(--hd);font-size:clamp(30px,3.6vw,42px);letter-spacing:-.02em;margin:0 0 8px}
+.sub{color:var(--mut);font-size:16.5px;margin:0 0 28px}
+.fg{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.fi{padding:20px;display:flex;gap:14px;align-items:flex-start}.fi b{display:block;font-size:16px;margin-bottom:2px}.fi small{color:var(--mut);font-size:14px}
+.seg{display:inline-grid;grid-auto-flow:column;gap:4px;background:#fff;border:1px solid var(--line);padding:4px;border-radius:12px;margin-bottom:22px}
+.seg button{border:0;background:none;padding:9px 16px;border-radius:9px;font-weight:700;color:var(--mut);cursor:pointer}.seg button.on{background:var(--toskaD);color:#fff}
+.pk{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px}
+.pc{padding:24px;display:flex;flex-direction:column;gap:12px;position:relative}
+.pc.fav{border:2px solid var(--toskaD);box-shadow:0 20px 50px rgba(11,122,109,.15)}
+.pc .tag{position:absolute;top:-13px;left:22px;background:var(--toskaD);color:#fff}
+.pc h3{margin:0;font-size:21px}.pc .ds{color:var(--mut);font-size:14px;min-height:40px}
+.pc .pr{font-family:var(--hd);font-size:38px;font-weight:800;letter-spacing:-.02em}.pc .pr small{font-family:var(--f);font-size:14px;color:var(--mut);font-weight:600}
+.pc .tot{font-size:13px;color:var(--mut);min-height:20px}
+.pc ul{list-style:none;padding:0;margin:0;display:grid;gap:7px;font-size:14.5px}.pc li{display:flex;gap:8px;align-items:center}.pc li.no{color:#A9B2B6}
+.pc .lim{font-size:13px;color:var(--mut);border-top:1px dashed var(--line);padding-top:10px}
+.pc .btn{margin-top:auto;min-height:46px}
+.reg{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:start}
+@media(max-width:900px){.reg{grid-template-columns:1fr}}
+.reg>*,.hero>*{min-width:0}.fm select.in{max-width:100%}
+.side b{word-break:break-all}
+.side{background:var(--toskaD);color:#fff;border-radius:22px;padding:28px}
+.side h3{font-family:var(--hd);font-size:28px;margin:0 0 10px;letter-spacing:-.02em}.side ol{padding-left:20px;margin:14px 0 0;display:grid;gap:10px;font-size:15px}
+.fm{padding:26px}
+.steps{display:flex;gap:6px;margin-bottom:18px}.steps i{flex:1;height:6px;border-radius:6px;background:var(--card2)}.steps i.on{background:var(--toska)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:560px){.g2{grid-template-columns:1fr}}
+.slug{display:flex;align-items:stretch;border:1px solid #D3DAD5;border-radius:12px;overflow:hidden;background:#fff}
+.slug input{border:0;flex:1;min-width:0;padding:9px 12px;outline:0}.slug span{background:var(--card2);padding:0 12px;display:grid;place-items:center;color:var(--mut);font-weight:600;white-space:nowrap;font-size:14px}
+.slug:focus-within{border-color:var(--toska);box-shadow:0 0 0 3px rgba(16,163,145,.18)}
+.hint{font-size:13px;margin-top:6px;min-height:18px}.hint.ok{color:#0A6A5F}.hint.no{color:#9B2C25}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}.chips button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:3px 10px;font-size:13px;cursor:pointer}
+.otp{font-size:26px;letter-spacing:.5em;text-align:center;font-weight:800}
+footer{padding:36px 0 50px;color:var(--mut);font-size:14px;border-top:1px solid var(--line)}
+.done{text-align:center;padding:30px 10px}.done h3{font-size:24px;margin:10px 0 6px}
+</style>
+</head>
+<body>
+<nav class="n"><div class="w"><span id="logo"></span><span class="sp"></span><a class="l hm" href="#fitur">Fitur</a><a class="l hm" href="#harga">Harga</a><button class="btn sm" id="bMasuk" style="white-space:nowrap"><span>Masuk<span class="hm"> ke toko</span></span></button><a class="btn pri sm" href="#daftar" style="white-space:nowrap">Coba gratis</a></div></nav>
+<main>
+<div class="w hero">
+  <div><span class="pill" id="pTrial">✨ Coba gratis semua fitur</span>
+    <h1>Kasir, stok & laporan toko <em>dalam satu aplikasi.</em></h1>
+    <p class="lead">Dari warung, kafe, sampai toko bangunan: jual di kasir, stok berkurang otomatis, untung-rugi kelihatan setiap hari. Bisa dibuka dari komputer, tablet, dan HP.</p>
+    <div class="cta"><a class="btn pri" href="#daftar">Daftarkan toko saya</a><a class="btn" href="#harga">Lihat harga</a></div>
+    <div class="trust"><span>✅ Tanpa instal</span><span>✅ Data tiap toko terpisah</span><span>✅ Bayar via transfer / QRIS</span></div></div>
+  <div class="shot"><div class="bw"><div class="bar"><i></i><i></i><i></i></div><img src="assets/land-kasir.jpg" alt="Tampilan layar kasir Dhyra dengan daftar produk dan keranjang belanja" width="1400" height="875"></div>
+    <div class="ph"><img src="assets/land-absen_hp.jpg" alt="Halaman absen karyawan di HP" width="420" height="715"></div></div>
+</div>
+<section id="fitur"><div class="w"><h2 class="t">Semua yang toko Anda perlukan</h2><p class="sub">Pilih paket sesuai kebutuhan, naikkan kapan saja.</p><div class="fg" id="fitList"></div></div></section>
+<section id="harga" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><div class="w"><h2 class="t">Harga sederhana, tanpa biaya tersembunyi</h2><p class="sub" id="hSub">Harga per toko. Semua paket bisa dicoba gratis dulu.</p>
+  <div class="seg" id="seg"><button data-b="1" class="on">Bulanan</button><button data-b="12">Tahunan</button></div><div class="pk" id="pk"><span class="spin d"></span></div></div></section>
+<section id="daftar"><div class="w reg">
+  <div class="side"><h3>Toko Anda siap dalam 2 menit</h3><p style="margin:0;opacity:.92">Isi data di samping, verifikasi nomor WhatsApp, dan langsung masuk ke aplikasi.</p>
+    <ol><li>Alamat toko sendiri, misalnya <b id="exUrl">tokoanda.dhyra.id</b></li><li>Kategori produk otomatis sesuai jenis usaha</li><li><span id="trialTxt">Masa coba gratis</span> — tanpa kartu kredit</li><li>Pilih paket & bayar setelah cocok</li></ol></div>
+  <div class="card fm" id="fm"><div class="steps"><i class="on"></i><i></i><i></i></div><div class="err-box" id="err" hidden></div><div id="st"></div></div>
+</div></section>
+</main>
+<footer><div class="w" style="display:flex;gap:16px;flex-wrap:wrap;align-items:center"><span id="logo2"></span><span class="sp" style="flex:1"></span><span id="kontak"></span></div></footer>
+<div id="modals"></div><div class="toasts" id="toasts"></div>
+<script src="assets/dhyra.js?v=5.6.2"></script>
+<script>
+'use strict';
+const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const D = window.Dhyra, Q = new URLSearchParams(location.search);
+const rp = n => 'Rp' + Math.round(+n || 0).toLocaleString('id-ID');
+let I = null, BLN = 1, STEP = 1, F = { ref: (Q.get('ref') || '').toUpperCase(), paket: Q.get('paket') || '' }, OTP_AT = 0;
+async function api(a, d) { const r = await fetch('api.php', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ m: 'saas', a, d: d || {} }) }).then(x => x.json()); if (r.error) { const e = new Error(r.error); e.code = r.code; throw e; } return r; }
+function err(m) { const e = $('#err'); e.hidden = !m; e.textContent = m || ''; if (m) e.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+const check = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0B7A6D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>';
+const cross = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C3CBCF" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>';
+const lim = n => n > 0 ? n.toLocaleString('id-ID') : 'Tanpa batas';
+const FIT = { kasir: ['Scan barcode, promo & poin otomatis, struk Bluetooth, tetap jalan saat offline', 'kasir'], inventaris: ['SKU, barcode, stok per toko & gudang, kartu stok, stok opname', 'inventaris'], member: ['Kartu member, poin & tukar poin', 'member'], laporan: ['Dashboard pemilik & laporan WhatsApp tiap malam', 'laporan'],
+  pembelian: ['PO ke pemasok, terima barang, hutang otomatis', 'pembelian'], promo: ['Diskon, harga grosir, beli X gratis Y', 'promo'], online: ['Katalog online, pesanan masuk ke WhatsApp', 'online'], akuntansi: ['Jurnal otomatis, laba rugi, neraca', 'akuntansi'], aset: ['Daftar peralatan & penyusutan', 'aset'], sdm: ['Absen selfie + GPS, cuti, lembur, slip gaji', 'sdm'], kpi: ['Target & penilaian kinerja karyawan', 'kpi'] };
+
+function renderHarga() {
+  $('#pk').innerHTML = I.paket.map(p => {
+    const tot = BLN === 12 && p.hargaTahun > 0 ? p.hargaTahun : p.hargaBulan * BLN, per = Math.round(tot / BLN);
+    return `<div class="card pc ${p.unggulan ? 'fav' : ''}">${p.unggulan ? '<span class="tag bdg">Paling populer</span>' : ''}<h3>${esc(p.nama)}</h3><div class="ds">${esc(p.deskripsi)}</div>
+      <div class="pr">${rp(BLN === 12 ? tot : per)}<small> /${BLN === 12 ? 'tahun' : 'bulan'}</small></div><div class="tot">${BLN === 12 ? `Setara ${rp(per)}/bulan${p.hargaBulan * 12 > tot ? ' · hemat ' + rp(p.hargaBulan * 12 - tot) : ''}` : 'Dibayar bulanan, berhenti kapan saja'}</div>
+      <ul>${Object.entries(I.modul).map(([k, n]) => `<li class="${p.modul.includes(k) ? '' : 'no'}">${p.modul.includes(k) ? check : cross}${esc(n)}</li>`).join('')}</ul>
+      <div class="lim">Outlet <b>${lim(p.maxOutlet)}</b> · Pengguna <b>${lim(p.maxUser)}</b> · Produk <b>${lim(p.maxProduk)}</b></div>
+      <a class="btn ${p.unggulan ? 'pri' : ''}" href="#daftar" data-pk="${esc(p.id)}">Coba gratis</a></div>`;
+  }).join('');
+  $$('[data-pk]').forEach(a => a.onclick = () => { F.paket = a.dataset.pk; });
+}
+function steps() { $$('.steps i').forEach((x, i) => x.classList.toggle('on', i < STEP)); }
+function stepToko(fokus) {
+  STEP = 1; steps(); err('');
+  $('#st').innerHTML = `<h3 style="margin:0 0 14px">1. Data toko</h3>
+    <label class="fld"><span>Nama toko</span><input class="in" id="fNama" value="${esc(F.nama || '')}" placeholder="mis. Warung Bu Sri" autocomplete="organization"></label>
+    <div class="fld"><span style="display:block;font-size:13px;font-weight:700;margin-bottom:6px">Alamat toko</span><div class="slug"><input id="fSlug" value="${esc(F.slug || '')}" placeholder="warungbusri" autocapitalize="none" spellcheck="false" aria-label="Alamat toko"><span>.${esc(I.domain)}</span></div><div class="hint" id="sh"></div><div class="chips" id="chips"></div></div>
+    <label class="fld"><span>Jenis usaha</span><select class="in" id="fJenis"><option value="">– Lainnya (atur kategori sendiri) –</option>${I.jenis.map(j => `<option value="${esc(j.id)}" ${F.jenis === j.id ? 'selected' : ''}>${esc(j.nama)}</option>`).join('')}</select></label>
+    <button class="btn pri" id="n1" style="width:100%;min-height:48px">Lanjut</button>`;
+  let tm = 0, manual = !!F.slug;
+  const cek = async () => {
+    const v = $('#fSlug').value.trim().toLowerCase(); if (!v) { $('#sh').textContent = ''; return; }
+    try { const r = await api('cekSlug', { slug: v, nama: $('#fNama').value }); if ($('#fSlug').value.trim().toLowerCase() !== v) return;
+      $('#sh').className = 'hint ' + (r.ok ? 'ok' : 'no'); $('#sh').textContent = r.ok ? '✓ ' + v + '.' + I.domain + ' tersedia' : r.alasan;
+      $('#chips').innerHTML = r.ok ? '' : r.saran.map(s => `<button type="button" data-s="${esc(s)}">${esc(s)}</button>`).join('');
+      $$('#chips [data-s]').forEach(b => b.onclick = () => { $('#fSlug').value = b.dataset.s; manual = true; cek(); });
+    } catch (e) {}
+  };
+  const bersih = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 30);
+  $('#fNama').oninput = () => { if (!manual) { $('#fSlug').value = bersih($('#fNama').value).replace(/-/g, ''); clearTimeout(tm); tm = setTimeout(cek, 350); } };
+  $('#fSlug').oninput = () => { manual = true; const c = $('#fSlug'); const p = c.selectionStart; c.value = c.value.toLowerCase().replace(/[^a-z0-9-]/g, ''); c.setSelectionRange(p, p); clearTimeout(tm); tm = setTimeout(cek, 350); };
+  if (F.slug) cek();
+  $('#n1').onclick = async () => {
+    F.nama = $('#fNama').value.trim(); F.slug = $('#fSlug').value.trim().toLowerCase(); F.jenis = $('#fJenis').value;
+    if (F.nama.length < 2) return err('Isi nama toko.');
+    try { const r = await api('cekSlug', { slug: F.slug, nama: F.nama }); if (!r.ok) return err('Alamat toko: ' + r.alasan); } catch (e) { return err(e.message); }
+    stepAkun();
+  };
+  if (fokus !== false) $('#fNama').focus();
+}
+function stepAkun() {
+  STEP = 2; steps(); err('');
+  $('#st').innerHTML = `<h3 style="margin:0 0 14px">2. Pemilik & akun admin</h3>
+    <div class="g2"><label class="fld"><span>Nama pemilik</span><input class="in" id="fPem" value="${esc(F.pemilik || '')}" autocomplete="name"></label>
+    <label class="fld"><span>Nomor WhatsApp</span><input class="in" id="fWa" value="${esc(F.wa || '')}" inputmode="tel" placeholder="0812xxxxxxxx" autocomplete="tel"></label></div>
+    <label class="fld"><span>Email <small class="mut" style="font-weight:500">(opsional)</small></span><input class="in" id="fEm" type="email" value="${esc(F.email || '')}" autocomplete="email"></label>
+    <div class="g2"><label class="fld"><span>Username admin</span><input class="in" id="fUn" value="${esc(F.username || '')}" autocapitalize="none" spellcheck="false" placeholder="mis. sri" autocomplete="username"></label>
+    <label class="fld"><span>Password (min. 6)</span><input class="in" id="fPw" type="password" autocomplete="new-password"></label></div>
+    <label class="fld"><span>Kode referral <small class="mut" style="font-weight:500">(opsional${I.refDiskon ? `, diskon ${I.refDiskon}% tagihan pertama` : ''})</small></span><input class="in" id="fRef" value="${esc(F.ref || '')}" style="text-transform:uppercase"></label>
+    <div style="display:flex;gap:10px"><button class="btn" id="b2">Kembali</button><button class="btn pri" id="n2" style="flex:1;min-height:48px">${I.otp ? 'Kirim kode verifikasi WhatsApp' : 'Daftarkan toko'}</button></div>`;
+  $('#b2').onclick = () => { simpan2(); stepToko(); };
+  $('#n2').onclick = async e => {
+    simpan2();
+    if (!F.pemilik) return err('Isi nama pemilik.'); if (!/^[a-z0-9._-]{3,30}$/.test(F.username)) return err('Username 3–30 karakter: huruf kecil, angka, titik, strip.');
+    if ((F.password || '').length < 6) return err('Password minimal 6 karakter.');
+    if (!I.otp) return daftar(e.currentTarget);
+    const b = e.currentTarget; b.disabled = true; b.innerHTML = '<span class="spin"></span> Mengirim kode…';
+    try { await api('otpKirim', { wa: F.wa }); OTP_AT = Date.now(); stepOtp(); } catch (er) { err(er.message); b.disabled = false; b.textContent = 'Kirim kode verifikasi WhatsApp'; }
+  };
+  $('#fPem').focus();
+}
+function simpan2() { F.pemilik = $('#fPem').value.trim(); F.wa = $('#fWa').value.trim(); F.email = $('#fEm').value.trim(); F.username = $('#fUn').value.trim().toLowerCase(); const p = $('#fPw').value; if (p) F.password = p; F.ref = $('#fRef').value.trim().toUpperCase(); }
+function stepOtp() {
+  STEP = 3; steps(); err('');
+  $('#st').innerHTML = `<h3 style="margin:0 0 6px">3. Verifikasi WhatsApp</h3><p class="mut" style="margin:0 0 16px">Kode 6 angka sudah dikirim ke WhatsApp <b>${esc(F.wa)}</b>.</p>
+    <input class="in otp" id="fOtp" inputmode="numeric" maxlength="6" autocomplete="one-time-code" aria-label="Kode verifikasi">
+    <div style="display:flex;gap:10px;margin-top:14px"><button class="btn" id="b3">Ubah nomor</button><button class="btn pri" id="n3" style="flex:1;min-height:48px">Daftarkan toko</button></div>
+    <p class="mut sm" style="margin:12px 0 0">Tidak menerima kode? <button class="btn sm" id="ulang" disabled>Kirim ulang</button></p>`;
+  const t = setInterval(() => { const s = 60 - Math.floor((Date.now() - OTP_AT) / 1000), u = $('#ulang'); if (!u) return clearInterval(t); u.disabled = s > 0; u.textContent = s > 0 ? `Kirim ulang (${s})` : 'Kirim ulang'; if (s <= 0) clearInterval(t); }, 500);
+  $('#ulang').onclick = async () => { try { await api('otpKirim', { wa: F.wa }); OTP_AT = Date.now(); stepOtp(); D && toastMsg('Kode baru dikirim'); } catch (e) { err(e.message); } };
+  $('#b3').onclick = stepAkun;
+  $('#fOtp').oninput = e => { e.target.value = e.target.value.replace(/\D/g, '').slice(0, 6); if (e.target.value.length === 6) $('#n3').click(); };
+  $('#n3').onclick = e => daftar(e.currentTarget);
+  $('#fOtp').focus();
+}
+function toastMsg(m) { const e = document.createElement('div'); e.className = 'toast'; e.textContent = m; $('#toasts').appendChild(e); setTimeout(() => e.remove(), 2600); }
+async function daftar(b) {
+  const lbl = b.textContent; b.disabled = true; b.innerHTML = '<span class="spin"></span> Menyiapkan toko…'; err('');
+  try {
+    const r = await api('daftar', Object.assign({}, F, { otp: $('#fOtp') ? $('#fOtp').value : '' }));
+    $$('.steps i').forEach(x => x.classList.add('on'));
+    $('#st').innerHTML = `<div class="done"><div style="font-size:46px">🎉</div><h3>Toko ${esc(F.nama)} sudah aktif!</h3><p class="mut">Alamat toko Anda:<br><b style="color:var(--ink);font-size:17px">${esc(r.url.replace(/^https?:\/\//, ''))}</b><br>Username: <b style="color:var(--ink)">${esc(r.username)}</b></p><p class="mut sm">Simpan alamat ini. Detailnya juga kami kirim ke WhatsApp.</p><a class="btn pri" href="${esc(r.masuk)}" style="min-height:48px;padding:0 26px">Masuk ke toko saya</a></div>`;
+    setTimeout(() => { location.href = r.masuk; }, 4000);
+  } catch (e) {
+    err(e.message); b.disabled = false; b.textContent = lbl;
+    if (e.code === 'OTP' && $('#fOtp')) { $('#fOtp').value = ''; $('#fOtp').focus(); }
+    else if (/Alamat toko/.test(e.message)) stepToko();
+  }
+}
+function masukToko() {
+  const ov = document.createElement('div'); ov.className = 'ov';
+  ov.innerHTML = `<div class="md" role="dialog" aria-modal="true"><div class="mh"><h3>Masuk ke toko</h3><button class="ib" data-x aria-label="Tutup"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div><div class="mb"><p class="mut" style="margin-top:0">Ketik alamat toko Anda.</p><div class="slug"><input id="mSlug" autocapitalize="none" spellcheck="false" placeholder="namatoko" aria-label="Alamat toko"><span>.${esc(I ? I.domain : '')}</span></div><p class="mut sm">Lupa alamat? Cari pesan WhatsApp “Selamat datang di ${esc(I ? I.brand : 'Dhyra')}”.</p></div><div class="mf"><button class="btn" data-x>Batal</button><button class="btn pri" id="mGo">Buka toko</button></div></div>`;
+  ov.addEventListener('mousedown', e => { if (e.target === ov) ov.remove(); }); $$('[data-x]', ov).forEach(b => b.onclick = () => ov.remove());
+  document.body.appendChild(ov); $('#mSlug', ov).focus();
+  const go = () => { const v = $('#mSlug', ov).value.trim().toLowerCase().replace(/[^a-z0-9-]/g, ''); if (v) location.href = I.url.replace('://', '://' + v + '.') + '/beranda.html'; };
+  $('#mGo', ov).onclick = go; $('#mSlug', ov).onkeydown = e => { if (e.key === 'Enter') go(); };
+}
+async function boot() {
+  $('#logo').innerHTML = D.logo(30); $('#logo2').innerHTML = D.logo(24);
+  $('#bMasuk').onclick = masukToko;
+  $$('#seg button').forEach(b => b.onclick = () => { BLN = +b.dataset.b; $$('#seg button').forEach(x => x.classList.toggle('on', x === b)); renderHarga(); });
+  try { I = await api('info'); } catch (e) { $('#pk').innerHTML = `<div class="err-box">${esc(e.message)}</div>`; $('#st').innerHTML = ''; return; }
+  document.title = I.brand + ' — Kasir, stok & laporan toko dalam satu aplikasi';
+  if (I.trialHari) { $('#pTrial').textContent = `✨ Coba gratis ${I.trialHari} hari, semua fitur`; $('#trialTxt').textContent = `Gratis ${I.trialHari} hari semua fitur paket ${I.trialPaket}`; $('#hSub').textContent = `Harga per toko. Mulai dengan masa coba gratis ${I.trialHari} hari.`; }
+  $('#exUrl').textContent = 'tokoanda.' + I.domain;
+  $('#fitList').innerHTML = Object.entries(I.modul).map(([k, n]) => `<div class="card fi"><span>${D.icon((FIT[k] || ['', k])[1], 44)}</span><span><b>${esc(n)}</b><small>${esc((FIT[k] || [''])[0])}</small></span></div>`).join('');
+  $('#kontak').innerHTML = I.kontakWa ? `Pertanyaan? WhatsApp <a href="https://wa.me/${esc(I.kontakWa.split(',')[0].trim())}" target="_blank" rel="noopener">${esc(I.kontakWa.split(',')[0].trim().replace(/^62/, '0'))}</a>` : '';
+  renderHarga();
+  if (!I.daftarAktif) { $('#st').innerHTML = '<p>Pendaftaran toko baru sedang ditutup sementara. Silakan hubungi kami.</p>'; return; }
+  stepToko(false);
+  if (F.ref) $('#daftar').scrollIntoView();
+}
+boot();
+</script>
+</body>
+</html>
